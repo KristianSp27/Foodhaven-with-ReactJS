@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from "react";
+import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import { getAll } from "../../services/foodService";
 
 const initialState = { foods: [] };
@@ -18,5 +19,9 @@ export default function HomePage() {
   useEffect(() => {
     getAll().then((foods) => dispatch({ type: "FOODS_LOADED", payload: foods }));
   }, []);
-  return <div>HomePage</div>;
+  return (
+    <>
+      <Thumbnails foods={foods} />
+    </>
+  );
 }
