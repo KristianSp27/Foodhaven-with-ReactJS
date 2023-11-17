@@ -25,6 +25,7 @@ export default function Thumbnails({ foods }) {
               </div>
               <div className={classes.cook_time}>
                 <span>🕒</span>
+                {food.cookTime}
               </div>
             </div>
           </div>
