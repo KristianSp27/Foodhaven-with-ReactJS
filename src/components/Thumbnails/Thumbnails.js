@@ -19,7 +19,7 @@ export default function Thumbnails({ foods }) {
             </div>
             <div className={classes.product_item_footer}>
               <div className={classes.origins}>
-                {foods.origins.map((origin) => (
+                {food.origins.map((origin) => (
                   <span key={origin}>{origin}</span>
                 ))}
               </div>
