@@ -18,3 +18,8 @@
     overflow: hidden;
     color: #e72929;
 }
+
+.image{
+    object-fit: cover;
+    height: 14.5rem;
+}
