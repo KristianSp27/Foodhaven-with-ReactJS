@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import { getAll, search } from "../../services/foodService";
 import { useParams } from "react-router-dom";
+import Search from "../../components/Search/Search";
 
 const initialState = { foods: [] };
 
@@ -24,6 +25,7 @@ export default function HomePage() {
   }, [searchTerm]);
   return (
     <>
+      <Search />
       <Thumbnails foods={foods} />
     </>
   );
