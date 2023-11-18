@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Search from "../../components/Search/Search";
 import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import { getAll, search } from "../../services/foodService";
+import Tags from "../../components/Tags/Tags";
 
 const initialState = { foods: [] };
 
@@ -29,6 +30,7 @@ export default function HomePage() {
   return (
     <>
       <Search />
+      <Tags />
       <Thumbnails foods={foods} />
     </>
   );
