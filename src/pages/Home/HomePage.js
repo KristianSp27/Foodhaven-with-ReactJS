@@ -12,7 +12,7 @@ const reducer = (state, action) => {
     case "FOODS_LOADED":
       return { ...state, foods: action.payload };
     case "TAGS_LOADED":
-      return { ...state, foods: action.payload };
+      return { ...state, tags: action.payload };
     default:
       return state;
   }
