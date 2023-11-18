@@ -11,6 +11,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "FOODS_LOADED":
       return { ...state, foods: action.payload };
+    case "TAGS_LOADED":
+      return { ...state, foods: action.payload };
     default:
       return state;
   }
