@@ -5,7 +5,7 @@ import Thumbnails from "../../components/Thumbnails/Thumbnails";
 import { getAll, getAllTags, search } from "../../services/foodService";
 import Tags from "../../components/Tags/Tags";
 
-const initialState = { foods: [] };
+const initialState = { foods: [], tags: [] };
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -20,7 +20,7 @@ const reducer = (state, action) => {
 
 export default function HomePage() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { foods } = state;
+  const { foods, tags } = state;
   const { searchTerm } = useParams();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function HomePage() {
   return (
     <>
       <Search />
-      <Tags />
+      <Tags tags={tags} />
       <Thumbnails foods={foods} />
     </>
   );
