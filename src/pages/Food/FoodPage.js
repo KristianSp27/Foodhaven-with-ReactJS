@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Tags from "../../components/Tags/Tags";
 import { getById } from "../../services/foodService";
 import StarRating from "../../components/StarRating/StarRating";
+import Price from "../../components/Price/Price";
 
 export default function FoodPage() {
   const [food, setFood] = useState({});
@@ -35,6 +36,18 @@ export default function FoodPage() {
             </div>
 
             <div className={classes.tags}>{food.tags && <Tags tags={food.tags.map((tag) => ({ name: tag }))} forFoodPage={true} />}</div>
+
+            <div className={classes.cook_time}>
+              <span>
+                Time to cook about <strong>{food.cookTime}</strong> minutes.
+              </span>
+            </div>
+
+            <div className={classes.price}>
+              <Price price={food.price} />
+            </div>
+
+            <button>Add to cart</button>
           </div>
         </div>
       )}
