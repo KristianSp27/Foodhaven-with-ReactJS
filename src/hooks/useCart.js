@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { sample_foods } from "../data";
 
 const CartContext = createContext(null);
@@ -7,5 +7,7 @@ export default function CartProvider({ children }) {
   const [totalPrice, setTotalPrice] = useState(40);
   const [totalCount, setTotalCount] = useState(3);
   //placeholder values in the upper 3 rows
-  return <CartContext.Provider value={{}}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ cart: { items: cartItems, totalPrice, totalCount } }}>{children}</CartContext.Provider>;
 }
+
+export const useCart = () => useContext();
