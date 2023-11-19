@@ -72,3 +72,14 @@
     border-radius: 10rem;
     font-size: 1.3rem;
 }
+
+.price{
+    font-size: 1.8rem;
+    margin: 2rem 2rem 2rem 0;
+    color: green    ;
+}
+
+.price::before{
+    content: 'Price: ';
+    color: darkgrey;
+}
