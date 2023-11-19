@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./foodPage.module.css";
 import { useParams } from "react-router-dom";
+import Tags from "../../components/Tags/Tags";
 import { getById } from "../../services/foodService";
 import StarRating from "../../components/StarRating/StarRating";
 
@@ -32,6 +33,8 @@ export default function FoodPage() {
                 <span key={origin}>{origin}</span>
               ))}
             </div>
+
+            <div className={classes.tags}>{food.tags && <Tags tags={food.tags.map((tag) => ({ name: tag }))} forFoodPage={true} />}</div>
           </div>
         </div>
       )}
