@@ -1,6 +1,6 @@
 import React from "react";
-import classes from "./tags.module.css";
 import { Link } from "react-router-dom";
+import classes from "./tags.module.css";
 
 export default function Tags({ tags, forFoodPage }) {
   return (
