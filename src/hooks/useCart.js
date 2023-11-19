@@ -10,4 +10,4 @@ export default function CartProvider({ children }) {
   return <CartContext.Provider value={{ cart: { items: cartItems, totalPrice, totalCount } }}>{children}</CartContext.Provider>;
 }
 
-export const useCart = () => useContext();
+export const useCart = () => useContext(CartContext);
