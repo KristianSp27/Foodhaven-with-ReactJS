@@ -13,7 +13,23 @@ export default function CartProvider({ children }) {
     setCartItems(filteredCartItems);
   };
 
-  return <CartContext.Provider value={{ cart: { items: cartItems, totalPrice, totalCount }, removeFromCart }}>{children}</CartContext.Provider>;
+  const changeQuantity = (cartItem, newQuantity) => {
+    const { food } = cartItem;
+
+    const changedCartItem = {
+      ...cartItem,
+      quantity: newQuantity,
+      price: food.price * newQuantity,
+    };
+
+    setCartItems(cartItems.map((item) => (item.food.id === food.id ? changedCartItem : item)));
+  };
+
+  return (
+    <CartContext.Provider value={{ cart: { items: cartItems, totalPrice, totalCount }, removeFromCart, changeQuantity }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
 
 export const useCart = () => useContext(CartContext);
