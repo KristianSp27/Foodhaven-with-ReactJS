@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./notFound.module.css";
 import { Link } from "react-router-dom";
 
-export default function NotFound(message, linkRoute, linkText) {
+export default function NotFound({ message, linkRoute, linkText }) {
   return (
     <div className={classes.container}>
       {message}
@@ -10,3 +10,9 @@ export default function NotFound(message, linkRoute, linkText) {
     </div>
   );
 }
+
+NotFound.defaultProps = {
+  message: "Nothing found!",
+  linkRoute: "/",
+  linkText: "Go to home page",
+};
