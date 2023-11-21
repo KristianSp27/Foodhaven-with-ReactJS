@@ -36,6 +36,15 @@ export default function CartProvider({ children }) {
     setCartItems(cartItems.map((item) => (item.food.id === food.id ? changedCartItem : item)));
   };
 
+  const addToCart = (food) => {
+    const cartItem = cartItems.find((item) => item.food.id === food.id);
+    if (cartItem) {
+      changeQuantity(cartItem, cartItem.quantity + 1);
+    } else {
+      setCartItems([...cartItems, { food, quantity: 1, price: food.price }]);
+    }
+  };
+
   return (
     <CartContext.Provider value={{ cart: { items: cartItems, totalPrice, totalCount }, removeFromCart, changeQuantity }}>
       {children}
