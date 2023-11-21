@@ -2,10 +2,18 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { sample_foods } from "../data";
 
 const CartContext = createContext(null);
+const CART_KEY = "cart";
+const EMPTY_CART = {
+  items: [],
+  totalPrice: 0,
+  totalCount: 0,
+};
+
 export default function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState(sample_foods.slice(1, 4).map((food) => ({ food, quantity: 1, price: food.price })));
-  const [totalPrice, setTotalPrice] = useState(40);
-  const [totalCount, setTotalCount] = useState(3);
+  const initCart = getCartFromLocalStorage();
+  const [cartItems, setCartItems] = useState(initCart.items);
+  const [totalPrice, setTotalPrice] = useState(initCart.totalPrice);
+  const [totalCount, setTotalCount] = useState(initCart.totalCount);
   //placeholder values in the upper 3 rows
 
   useEffect(() => {
@@ -13,7 +21,21 @@ export default function CartProvider({ children }) {
     const totalCount = sum(cartItems.map((item) => item.quantity));
     setTotalPrice(totalPrice);
     setTotalCount(totalCount);
+
+    localStorage.setItem(
+      CART_KEY,
+      JSON.stringify({
+        items: cartItems,
+        totalPrice,
+        totalCount,
+      })
+    );
   }, [cartItems]);
+
+  function getCartFromLocalStorage() {
+    const storedCart = localStorage.getItem(CART_KEY);
+    return storedCart ? JSON.parse(storedCart) : EMPTY_CART;
+  }
 
   const sum = (items) => {
     return items.reduce((prevValue, curValue) => prevValue + curValue, 0);
