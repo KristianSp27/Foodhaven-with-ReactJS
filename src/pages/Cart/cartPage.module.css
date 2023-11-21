@@ -103,3 +103,19 @@
     content: 'Price: ';
     color: grey;
 }
+
+.checkout a{
+    padding: 1rem;
+    color: white;
+    background: #e72929;
+    display: block;
+    width: 99%;
+    border-radius: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.checkout a:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
