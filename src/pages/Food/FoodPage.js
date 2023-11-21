@@ -6,6 +6,7 @@ import { getById } from "../../services/foodService";
 import StarRating from "../../components/StarRating/StarRating";
 import Price from "../../components/Price/Price";
 import { useCart } from "../../hooks/useCart";
+import NotFound from "../../components/NotFound/NotFound";
 
 export default function FoodPage() {
   const [food, setFood] = useState({});
@@ -23,7 +24,9 @@ export default function FoodPage() {
   }, [id]);
   return (
     <>
-      {food && (
+      {!food ? (
+        <NotFound message="Food not found!" linkText="Back to the homepage" />
+      ) : (
         <div className={classes.container}>
           <img className={classes.image} src={`/foods/${food.imageUrl}`} alt={food.name} />
 
