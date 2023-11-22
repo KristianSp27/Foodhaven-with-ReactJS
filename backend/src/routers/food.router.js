@@ -23,4 +23,10 @@ router.get("/tag/:tag", (req, res) => {
   res.send(foods);
 });
 
+router.get("/:foodId", (req, res) => {
+  const { foodId } = req.params;
+  const food = sample_foods.find((item) => item.id === foodId);
+  res.send(food);
+});
+
 export default router;
