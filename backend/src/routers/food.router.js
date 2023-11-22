@@ -7,4 +7,14 @@ router.get("/", (req, res) => {
   res.send(sample_foods);
 });
 
+router.get("/tags", (req, res) => {
+  res.send(sample_tags);
+});
+
+router.get("/search/:searchTerm", (req, res) => {
+  const { searchTerm } = req.params;
+  const foods = sample_foods.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  res.send(foods);
+});
+
 export default router;
