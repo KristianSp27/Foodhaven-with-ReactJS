@@ -13,7 +13,6 @@ export default function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState(initCart.items);
   const [totalPrice, setTotalPrice] = useState(initCart.totalPrice);
   const [totalCount, setTotalCount] = useState(initCart.totalCount);
-  //placeholder values in the upper 3 rows
 
   useEffect(() => {
     const totalPrice = sum(cartItems.map((item) => item.price));
