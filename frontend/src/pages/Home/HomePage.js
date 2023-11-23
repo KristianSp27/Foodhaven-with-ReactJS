@@ -28,8 +28,10 @@ export default function HomePage() {
     getAllTags().then((tags) => dispatch({ type: "TAGS_LOADED", payload: tags }));
 
     const loadFoods = tag ? getAllByTag(tag) : searchTerm ? search(searchTerm) : getAll();
-
-    loadFoods.then((foods) => dispatch({ type: "FOODS_LOADED", payload: foods }));
+    loadFoods.then((foods) => {
+      console.log(foods);
+      dispatch({ type: "FOODS_LOADED", payload: Array.isArray(foods) ? foods : [] });
+    });
   }, [searchTerm, tag]);
 
   return (
