@@ -22,14 +22,12 @@ router.get("/search/:searchTerm", (req, res) => {
 router.get("/tag/:tag", (req, res) => {
   const { tag } = req.params;
   const foods = sample_foods.filter((item) => item.tags?.includes(tag));
-  console.log(foods);
   res.send(foods);
 });
 
 router.get("/:foodId", (req, res) => {
   const { foodId } = req.params;
   const food = sample_foods.find((item) => item.id === foodId);
-  console.log(food);
 
   res.send(food);
 });
