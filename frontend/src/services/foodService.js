@@ -6,7 +6,7 @@ export const getAll = async () => {
 };
 
 export const search = async (searchTerm) => {
-  const { data } = await axios.get("/api/foods/search" + searchTerm);
+  const { data } = await axios.get("/api/foods/search/" + searchTerm);
   return data;
 };
 
@@ -17,7 +17,7 @@ export const getAllTags = async () => {
 
 export const getAllByTag = async (tag) => {
   if (tag === "All") return getAll();
-  const { data } = await axios.get("/api/foods/tag" + tag);
+  const { data } = await axios.get("/api/foods/tag/" + tag);
   return data;
 };
 

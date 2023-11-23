@@ -29,7 +29,7 @@ router.get("/tag/:tag", (req, res) => {
 router.get("/:foodId", (req, res) => {
   const { foodId } = req.params;
   const food = sample_foods.find((item) => item.id === foodId);
-  console.log(foods);
+  console.log(food);
 
   res.send(food);
 });
