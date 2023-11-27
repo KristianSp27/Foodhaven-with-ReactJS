@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { sample_users } from "../data";
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -10,3 +11,24 @@ router.post("/login", (req, res) => {
   if (user) {
   }
 });
+
+const generateTokenResponse = (user) => {
+  const token = jwt.sign(
+    {
+      id: user.id,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    },
+    "SomeRandomText",
+    {
+      expiresIn: "30d",
+    }
+  );
+
+  return {
+    id: user.id,
+    email: user.email,
+    name: user.name,
+    isAdmin: user.isAdmin,
+  };
+};
