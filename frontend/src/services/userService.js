@@ -7,3 +7,7 @@ export const login = async (email, password) => {
   localStorage.setItem("user", JSON.stringify(data));
   return data;
 };
+
+export const logout = () => {
+  localStorage.removeItem("user");
+};
