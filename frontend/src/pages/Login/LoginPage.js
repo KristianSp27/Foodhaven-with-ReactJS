@@ -48,7 +48,7 @@ export default function LoginPage() {
 
           <Input
             type="password"
-            label="password"
+            label="Password"
             {...register("password", {
               required: true,
             })}
