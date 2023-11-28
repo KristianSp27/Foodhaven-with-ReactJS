@@ -44,6 +44,15 @@ export default function LoginPage() {
             })}
             error={errors.email}
           />
+
+          <Input
+            type="password"
+            label="password"
+            {...register("password", {
+              required: true,
+            })}
+            error={errors.password}
+          />
         </form>
       </div>
     </div>
