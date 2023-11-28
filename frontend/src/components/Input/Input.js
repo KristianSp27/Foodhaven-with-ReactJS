@@ -17,7 +17,21 @@ function Input({ label, type, defaultValue, onChange, onBlur, name, error }, ref
     }
   };
 
-  return <div>Input</div>;
+  return (
+    <InputContainer label={label}>
+      <input
+        defaultValue={defaultValue}
+        className={classes.input}
+        type={type}
+        placeholder={label}
+        ref={ref}
+        name={name}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      {error && <div className={classes.error}>{getErrorMessage()}</div>}
+    </InputContainer>
+  );
 }
 
 export default React.forwardRef(Input);
