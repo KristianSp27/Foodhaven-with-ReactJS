@@ -9,3 +9,9 @@
 .details {
     width: 28rem;
 }
+
+.details form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
