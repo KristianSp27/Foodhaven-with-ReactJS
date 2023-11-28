@@ -11,9 +11,15 @@ export const AuthProvider = ({ children }) => {
     try {
       const user = await userService.login(email, password);
       setUser(user);
-      toast.success("Login successful!");
+      toast.success("Log in successful!");
     } catch (err) {
       toast.error(err.response.data);
     }
+  };
+
+  const logout = () => {
+    userService.logout();
+    setUser(null);
+    toast.success("Log out successful!");
   };
 };
