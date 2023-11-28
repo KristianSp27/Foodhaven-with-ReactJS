@@ -1,7 +1,23 @@
 import classes from "./button.module.css";
 
 export default function Button({ type, text, onClick, color, backgroundColor, fontSize, width, height }) {
-  return <div>Button</div>;
+  return (
+    <div className={classes.container}>
+      <button
+        style={{
+          color,
+          backgroundColor,
+          fontSize,
+          width,
+          height,
+        }}
+        type={type}
+        onClick={onClick}
+      >
+        {text}
+      </button>
+    </div>
+  );
 }
 
 Button.defaultProps = {
