@@ -12,6 +12,8 @@ router.post("/login", (req, res) => {
     res.send(generateTokenResponse(user));
     return;
   }
+
+  res.status(BAD_REQUEST).send("The username or the password is invalid!");
 });
 
 const generateTokenResponse = (user) => {
