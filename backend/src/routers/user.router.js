@@ -3,7 +3,7 @@ import { sample_users } from "../data";
 import jwt from "jsonwebtoken";
 import { BAD_REQUEST } from "../constants/httpStatus.js";
 
-const router = Router();
+export const router = Router();
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
