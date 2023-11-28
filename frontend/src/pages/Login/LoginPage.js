@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -14,6 +14,15 @@ export default function LoginPage() {
   const { user, login } = useAuth();
   const [params] = useSearchParams();
   const returnUrl = params.get("returnUrl");
+
+  useEffect(() => {
+    if (!user) return;
+    returnUrl ? navigate(returnUrl) : navigate("/");
+  }, [user]);
+
+  const submit = async ({ email, password }) => {
+    await login(email, password);
+  };
 
   return <div>LoginPage</div>;
 }
