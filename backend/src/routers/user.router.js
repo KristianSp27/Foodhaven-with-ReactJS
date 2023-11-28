@@ -1,9 +1,8 @@
 import { Router } from "express";
-import { sample_users } from "../data";
+import { sample_users } from "../data.js";
 import jwt from "jsonwebtoken";
+const router = Router();
 import { BAD_REQUEST } from "../constants/httpStatus.js";
-
-export const router = Router();
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -14,7 +13,7 @@ router.post("/login", (req, res) => {
     return;
   }
 
-  res.status(BAD_REQUEST).send("The username or the password is invalid!");
+  res.status(BAD_REQUEST).send("Username or password is invalid");
 });
 
 const generateTokenResponse = (user) => {
@@ -39,3 +38,5 @@ const generateTokenResponse = (user) => {
     token,
   };
 };
+
+export default router;
