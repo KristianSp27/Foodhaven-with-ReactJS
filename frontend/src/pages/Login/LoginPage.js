@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import classes from "./loginPage.module.css";
 import Title from "../../components/Title/Title";
+import Input from "../../components/Input/Input";
 
 export default function LoginPage() {
   const {
@@ -30,7 +31,20 @@ export default function LoginPage() {
     <div className={classes.container}>
       <div className={classes.details}>
         <Title title="Login" />
-        <form onSubmit={handleSubmit(submit)} noValidate></form>
+        <form onSubmit={handleSubmit(submit)} noValidate>
+          <Input
+            type="email"
+            label="Email"
+            {...register("email", {
+              required: true,
+              pattern: {
+                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,63}$/i,
+                message: "The email is not valid",
+              },
+            })}
+            error={errors.email}
+          />
+        </form>
       </div>
     </div>
   );
