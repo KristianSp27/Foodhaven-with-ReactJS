@@ -9,6 +9,8 @@ router.post("/login", (req, res) => {
   const user = sample_users.find((user) => user.email === email && user.password === password);
 
   if (user) {
+    res.send(generateTokenResponse(user));
+    return;
   }
 });
 
