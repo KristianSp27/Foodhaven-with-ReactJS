@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import classes from "./loginPage.module.css";
+import Title from "../../components/Title/Title";
 
 export default function LoginPage() {
   const {
@@ -24,5 +26,11 @@ export default function LoginPage() {
     await login(email, password);
   };
 
-  return <div>LoginPage</div>;
+  return (
+    <div className={classes.container}>
+      <div className={classes.details}>
+        <Title title="Login" />
+      </div>
+    </div>
+  );
 }
