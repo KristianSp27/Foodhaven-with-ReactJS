@@ -11,7 +11,7 @@ router.post(
   "/login",
   handler(async (req, res) => {
     const { email, password } = req.body;
-    const user = sample_users.find((user) => user.email === email && user.password === password);
+    const user = await UserModel.findOne({ email });
 
     if (user) {
       res.send(generateTokenResponse(user));
