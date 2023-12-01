@@ -34,3 +34,11 @@ async function seedUsers() {
     await UserModel.create(user);
   }
 }
+
+async function seedFoods() {
+  const foods = await FoodModel.countDocuments();
+  if (foods > 0) {
+    console.log("Foods seed is already done!");
+    return;
+  }
+}
