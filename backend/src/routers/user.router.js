@@ -3,7 +3,7 @@ import { sample_users } from "../data.js";
 import jwt from "jsonwebtoken";
 const router = Router();
 import { BAD_REQUEST } from "../constants/httpStatus.js";
-import handle from "express-async-handler";
+import handler from "express-async-handler";
 import { UserModel } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 
@@ -13,7 +13,7 @@ router.post(
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email });
 
-    if (user) {
+    if (user && (await bcrypt.compare(password, user.password))) {
       res.send(generateTokenResponse(user));
       return;
     }
