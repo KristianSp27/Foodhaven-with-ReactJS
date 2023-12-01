@@ -46,4 +46,6 @@ async function seedFoods() {
     food.imageUrl = `/foods/${food.imageUrl}`;
     await FoodModel.create(food);
   }
+
+  console.log("Foods seed is done!");
 }
