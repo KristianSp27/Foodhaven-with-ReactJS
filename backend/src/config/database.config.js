@@ -20,3 +20,11 @@ export const dbConnect = async () => {
     console.log(error);
   }
 };
+
+async function seedUsers() {
+  const usersCount = await UserModel.countDocuments();
+  if (usersCount > 0) {
+    console.log("Users seed is already done!");
+    return;
+  }
+}
