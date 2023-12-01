@@ -3,6 +3,9 @@ import { sample_users } from "../data.js";
 import jwt from "jsonwebtoken";
 const router = Router();
 import { BAD_REQUEST } from "../constants/httpStatus.js";
+import handle from "express-async-handler";
+import { UserModel } from "../models/user.model.js";
+import bcrypt from "bcryptjs";
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
