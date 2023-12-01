@@ -1,4 +1,9 @@
 import { connect, set } from "mongoose";
+import { UserModel } from "../models/user.model";
+import { FoodModel } from "../models/food.model";
+import { sample_users } from "../data";
+import { sample_foods } from "../data";
+import bcrypt from "bcryptjs";
 
 set("strictQuery", true);
 
