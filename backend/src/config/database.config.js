@@ -15,6 +15,7 @@ export const dbConnect = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    await seedUsers();
     console.log("connected successfully");
   } catch (error) {
     console.log(error);
