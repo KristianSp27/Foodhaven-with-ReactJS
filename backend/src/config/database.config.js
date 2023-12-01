@@ -16,6 +16,7 @@ export const dbConnect = async () => {
       useUnifiedTopology: true,
     });
     await seedUsers();
+    await seedFoods();
     console.log("connected successfully");
   } catch (error) {
     console.log(error);
