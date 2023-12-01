@@ -27,4 +27,9 @@ async function seedUsers() {
     console.log("Users seed is already done!");
     return;
   }
+
+  for (const user of sample_users) {
+    user.password = await bcrypt.hash(user.password, PASSWORD_HASH_SALT_ROUNDS);
+    await UserModel.create(user);
+  }
 }
