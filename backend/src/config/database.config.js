@@ -5,6 +5,8 @@ import { sample_users } from "../data";
 import { sample_foods } from "../data";
 import bcrypt from "bcryptjs";
 
+const PASSWORD_HASH_SALT_ROUNDS = 10;
+
 set("strictQuery", true);
 
 export const dbConnect = async () => {
