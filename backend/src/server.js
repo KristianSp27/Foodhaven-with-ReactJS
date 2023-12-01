@@ -5,6 +5,9 @@ import cors from "cors";
 import foodRouter from "./routers/food.router.js";
 import userRouter from "./routers/user.router.js";
 
+import { dbConnect } from "./config/database.config.js";
+dbConnect();
+
 const app = express();
 app.use(express.json());
 app.use(
