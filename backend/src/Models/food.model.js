@@ -21,3 +21,5 @@ export const FoodSchema = new Schema(
     timestamps: true,
   }
 );
+
+export const FoodModel = model("food", FoodSchema);
