@@ -52,6 +52,16 @@ export default function RegisterPage() {
             })}
             error={errors.confirmPassword}
           />
+
+          <Input
+            type="text"
+            label="Address"
+            {...register("address", {
+              required: true,
+              minLength: 10,
+            })}
+            error={errors.address}
+          />
         </form>
       </div>
     </div>
