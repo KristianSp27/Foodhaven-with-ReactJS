@@ -71,7 +71,7 @@ export default function RegisterPage() {
 
           <div className={classes.login}>
             Already a user? &nbsp;
-            <Link to={`/login${returnUrl ? "?returnUrl=" + returnUrl : ""}`}>Log-in here</Link>
+            <Link to={`/login${returnUrl ? "?returnUrl=" + returnUrl : ""}`}>Log in here</Link>
           </div>
         </form>
       </div>
