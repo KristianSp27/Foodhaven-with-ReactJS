@@ -60,6 +60,16 @@ export default function RegisterPage() {
 
           <Input
             type="password"
+            label="Password"
+            {...register("password", {
+              required: true,
+              minLength: 5,
+            })}
+            error={errors.password}
+          />
+
+          <Input
+            type="password"
             label="Confirm password"
             {...register("confirmPassword", {
               required: true,
