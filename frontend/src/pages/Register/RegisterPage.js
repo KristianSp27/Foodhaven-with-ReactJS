@@ -62,6 +62,8 @@ export default function RegisterPage() {
             })}
             error={errors.address}
           />
+
+          <Button type="submit" text="Register" />
         </form>
       </div>
     </div>
