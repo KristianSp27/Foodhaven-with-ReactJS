@@ -29,6 +29,19 @@ export default function RegisterPage() {
             })}
             error={errors.name}
           />
+
+          <Input
+            type="email"
+            label="Email"
+            {...register("email", {
+              required: true,
+              pattern: {
+                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,63}$/i,
+                message: "Email Is Not Valid",
+              },
+            })}
+            error={errors.email}
+          />
         </form>
       </div>
     </div>
