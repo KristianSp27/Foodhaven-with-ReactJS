@@ -52,7 +52,6 @@ router.get(
     const searchRegex = new RegExp(searchTerm, "i");
 
     const foods = await FoodModel.find({ name: { $regex: searchRegex } });
-    console.log(foods);
 
     res.send(foods);
   })
@@ -62,7 +61,7 @@ router.get(
   "/tag/:tag",
   handler(async (req, res) => {
     const { tag } = req.params;
-    const foods = sample_foods.filter((item) => item.tags?.includes(tag));
+    const foods = await FoodModel.find({ tags: tag });
     res.send(foods);
   })
 );
