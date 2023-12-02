@@ -21,6 +21,20 @@ router.post(
   })
 );
 
+router.post(
+  "/register",
+  handler(async (req, res) => {
+    const { name, email, password, address } = req.body;
+
+    const user = await UserModel.findOne({ email });
+
+    if (user) {
+      res.status(BAD_REQUEST).send("This user already exists! Please, log in!");
+      return;
+    }
+  })
+);
+
 const generateTokenResponse = (user) => {
   const token = jwt.sign(
     {
