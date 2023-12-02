@@ -43,6 +43,9 @@ router.post(
       password: hashedPassword,
       address,
     };
+
+    const result = await UserModel.create(newUser);
+    res.send(generateTokenResponse(result));
   })
 );
 
