@@ -52,7 +52,6 @@ router.get(
     const searchRegex = new RegExp(searchTerm, "i");
 
     const foods = await FoodModel.find({ name: { $regex: searchRegex } });
-
     res.send(foods);
   })
 );
@@ -71,7 +70,6 @@ router.get(
   handler(async (req, res) => {
     const { foodId } = req.params;
     const food = await FoodModel.findById(foodId);
-
     res.send(food);
   })
 );
