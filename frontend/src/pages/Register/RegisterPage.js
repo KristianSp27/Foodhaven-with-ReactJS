@@ -42,6 +42,16 @@ export default function RegisterPage() {
             })}
             error={errors.email}
           />
+
+          <Input
+            type="password"
+            label="Confirm password"
+            {...register("confirmPassword", {
+              required: true,
+              validate: (value) => (value !== getValues("password") ? "The passwords do not match" : true),
+            })}
+            error={errors.confirmPassword}
+          />
         </form>
       </div>
     </div>
