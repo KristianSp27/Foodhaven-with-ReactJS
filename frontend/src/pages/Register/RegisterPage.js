@@ -37,7 +37,7 @@ export default function RegisterPage() {
               required: true,
               pattern: {
                 value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,63}$/i,
-                message: "Email Is Not Valid",
+                message: "Email is not valid",
               },
             })}
             error={errors.email}
