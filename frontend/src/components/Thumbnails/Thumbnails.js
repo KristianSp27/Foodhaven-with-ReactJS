@@ -11,7 +11,7 @@ export default function Thumbnails({ foods }) {
         foods.map((food) => (
           <li key={food.id}>
             <Link to={`/food/${food.id}`}>
-              <img className={classes.image} src={`/foods/${food.imageUrl}`} alt={food.name} />
+              <img className={classes.image} src={`${food.imageUrl}`} alt={food.name} />
               <div className={classes.content}>
                 <div className={classes.name}>{food.name}</div>
                 <span className={`${classes.favorite} ${food.favorite ? "" : classes.not}`}>❤</span>
