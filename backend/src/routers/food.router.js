@@ -41,7 +41,7 @@ router.get(
 
     tags.unshift(all);
 
-    res.send(sample_tags);
+    res.send(tags);
   })
 );
 
@@ -49,7 +49,9 @@ router.get(
   "/search/:searchTerm",
   handler(async (req, res) => {
     const { searchTerm } = req.params;
-    const foods = sample_foods.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const searchRegex = new RegExp(searchTerm, "i");
+
+    const foods = await FoodModel.find({ name: { $regex: searchRegex } });
     console.log(foods);
 
     res.send(foods);
