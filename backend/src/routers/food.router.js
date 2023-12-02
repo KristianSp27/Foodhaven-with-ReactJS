@@ -32,7 +32,15 @@ router.get(
           count: "$count",
         },
       },
-    ]);
+    ]).sort({ count: -1 });
+
+    const all = {
+      name: "All",
+      count: await FoodModel.countDocuments(),
+    };
+
+    tags.unshift(all);
+
     res.send(sample_tags);
   })
 );
