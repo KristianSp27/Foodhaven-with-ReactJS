@@ -19,7 +19,17 @@ export default function RegisterPage() {
     <div className={classes.container}>
       <div className={classes.details}>
         <Title title="Register" />
-        <form onSubmit={handleSubmit(submit)} noValidate></form>
+        <form onSubmit={handleSubmit(submit)} noValidate>
+          <Input
+            type="text"
+            label="name"
+            {...register("name", {
+              required: true,
+              minLength: 5,
+            })}
+            error={errors.name}
+          />
+        </form>
       </div>
     </div>
   );
