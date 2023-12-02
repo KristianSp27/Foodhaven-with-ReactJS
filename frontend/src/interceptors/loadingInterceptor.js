@@ -23,3 +23,5 @@ export const setLoadingInterceptor = ({ showLoading, hideLoading }) => {
     }
   );
 };
+
+export default setLoadingInterceptor;
