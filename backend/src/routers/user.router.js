@@ -35,12 +35,12 @@ router.post(
       return;
     }
 
-    const encryptedPassword = await bcrypt.hash(password, PASSWORD_HASH_SALT_ROUNDS);
+    const hashedPassword = await bcrypt.hash(password, PASSWORD_HASH_SALT_ROUNDS);
 
     const newUser = {
       name,
       email: email.toLowerCase(),
-      password: encryptedPassword,
+      password: hashedPassword,
       address,
     };
   })
