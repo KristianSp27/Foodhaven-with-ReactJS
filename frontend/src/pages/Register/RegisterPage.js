@@ -19,6 +19,7 @@ export default function RegisterPage() {
     <div className={classes.container}>
       <div className={classes.details}>
         <Title title="Register" />
+        <form onSubmit={handleSubmit(submit)} noValidate></form>
       </div>
     </div>
   );
