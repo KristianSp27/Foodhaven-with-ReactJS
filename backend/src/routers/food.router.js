@@ -70,7 +70,7 @@ router.get(
   "/:foodId",
   handler(async (req, res) => {
     const { foodId } = req.params;
-    const food = sample_foods.find((item) => item.id === foodId);
+    const food = await FoodModel.findById(foodId);
 
     res.send(food);
   })
