@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export default function CheckoutPage() {
   const { cart } = useCart();
@@ -16,5 +17,10 @@ export default function CheckoutPage() {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const submit = async (data) => {
+    if (!order.addressLatLng) {
+    }
+  };
   return <div>CheckoutPage</div>;
 }
