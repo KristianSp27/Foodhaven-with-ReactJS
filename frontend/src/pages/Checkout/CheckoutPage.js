@@ -20,6 +20,8 @@ export default function CheckoutPage() {
 
   const submit = async (data) => {
     if (!order.addressLatLng) {
+      toast.warning("Please, select your location on the map.");
+      return;
     }
   };
   return <div>CheckoutPage</div>;
