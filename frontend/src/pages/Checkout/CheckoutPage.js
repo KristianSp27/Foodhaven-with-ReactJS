@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { createOrder } from "../../services/orderService";
 
 export default function CheckoutPage() {
   const { cart } = useCart();
@@ -23,6 +24,8 @@ export default function CheckoutPage() {
       toast.warning("Please, select your location on the map.");
       return;
     }
+
+    await createOrder({ ...order, name: data.name, address: data.address });
   };
   return <div>CheckoutPage</div>;
 }
