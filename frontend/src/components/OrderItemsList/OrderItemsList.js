@@ -12,6 +12,15 @@ export default function OrderItemsList({ order }) {
             <h3>Order items:</h3>
           </td>
         </tr>
+        {order.items.map((item) => (
+          <tr key={item.food.id}>
+            <td>
+              <Link to={`/food/${item.food.id}`}>
+                <img src={item.food.imageUrl} />
+              </Link>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
