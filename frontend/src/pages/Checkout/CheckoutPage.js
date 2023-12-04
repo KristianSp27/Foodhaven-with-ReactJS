@@ -26,6 +26,7 @@ export default function CheckoutPage() {
     }
 
     await createOrder({ ...order, name: data.name, address: data.address });
+    navigate("/payment");
   };
   return <div>CheckoutPage</div>;
 }
