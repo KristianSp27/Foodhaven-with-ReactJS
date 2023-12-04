@@ -19,6 +19,14 @@ export default function OrderItemsList({ order }) {
                 <img src={item.food.imageUrl} />
               </Link>
             </td>
+            <td>{item.food.name}</td>
+            <td>
+              <Price price={item.food.price} />
+            </td>
+            <td>{item.quantity}</td>
+            <td>
+              <Price price={item.price} />
+            </td>
           </tr>
         ))}
       </tbody>
