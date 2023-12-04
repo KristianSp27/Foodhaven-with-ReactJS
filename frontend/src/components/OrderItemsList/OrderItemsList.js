@@ -29,6 +29,16 @@ export default function OrderItemsList({ order }) {
             </td>
           </tr>
         ))}
+
+        <tr>
+          <td colSpan="3"></td>
+          <td>
+            <strong>Total: </strong>
+          </td>
+          <td>
+            <Price price={order.totalPrice} />
+          </td>
+        </tr>
       </tbody>
     </table>
   );
