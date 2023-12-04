@@ -19,3 +19,14 @@
 .inputs {
     width: 100%;
 }
+
+.buttons_container {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    margin: 2rem;
+    width: 35rem;
+}
