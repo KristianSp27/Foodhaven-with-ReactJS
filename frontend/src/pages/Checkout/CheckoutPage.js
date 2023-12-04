@@ -52,6 +52,14 @@ export default function CheckoutPage() {
             />
           </div>
         </div>
+        <div>
+          <Title title="Choose your location" fontSize="1.6rem" />
+        </div>
+        <div className={classes.buttons_container}>
+          <div className="classes.buttons">
+            <Button type="submit" text="Proceed to payment..." width="100%" height="3rem" />
+          </div>
+        </div>
       </form>
     </>
   );
