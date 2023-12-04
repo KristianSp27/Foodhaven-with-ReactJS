@@ -35,7 +35,23 @@ export default function CheckoutPage() {
   return (
     <>
       <form onSubmit={handleSubmit(submit)} className={classes.container}>
-        <div className={classes.content}></div>
+        <div className={classes.content}>
+          <Title title="Order form" fontSize="1.6rem" />
+          <div className={classes.inputs}>
+            <Input
+              defaultValue={user.name}
+              label="Name"
+              {...register("name")}
+              error={errors.name}
+            />
+            <Input
+              defaultValue={user.address}
+              label="Address"
+              {...register("address")}
+              error={errors.address}
+            />
+          </div>
+        </div>
       </form>
     </>
   );
