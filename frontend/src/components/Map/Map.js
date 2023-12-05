@@ -47,6 +47,20 @@ function FindButtonAndMarker({ readOnly, location, onChange }) {
           Find my location
         </button>
       )}
+
+      {position && (
+        <Marker
+          eventHandlers={{
+            dragend: (e) => {
+              setPosition(e.target.getLatLng());
+            },
+          }}
+          position={position}
+          draggable={!readOnly}
+        >
+          <Popup>Shipping location</Popup>
+        </Marker>
+      )}
     </>
   );
 }
