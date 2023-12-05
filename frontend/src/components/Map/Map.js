@@ -29,6 +29,14 @@ export default function Map({ readOnly, location, onChange }) {
 function FindButtonAndMarker({ readOnly, location, onChange }) {
   const [position, setPosition] = useState(location);
 
+  useEffect(() => {
+    if (readOnly) {
+      map.setView(position, 13);
+      return;
+    }
+    if (position) onChange(position);
+  }, [position]);
+
   const map = useMapEvents({
     click(e) {
       !readOnly && setPosition(e.latlng);
