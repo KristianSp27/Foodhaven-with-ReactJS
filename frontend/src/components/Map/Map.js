@@ -27,4 +27,17 @@ export default function Map({ readOnly, location, onChange }) {
 
 function FindButtonAndMarker({ readOnly, location, onChange }) {
   const [position, setPosition] = useState(location);
+
+  const map = useMapEvents({
+    click(e) {
+      !readOnly && setPosition(e.latlng);
+    },
+    locationfound(e) {
+      setPosition(e.latlng);
+      map.flyTo(e.latlng, 13);
+    },
+    locationerror(e) {
+      toast.error(e.message);
+    },
+  });
 }
