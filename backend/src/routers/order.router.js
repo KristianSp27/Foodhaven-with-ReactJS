@@ -1,9 +1,9 @@
 import { Router } from "express";
 import handler from "express-async-handler";
-import authMid from "../middleware/auth.mid";
-import { BAD_REQUEST } from "../constants/httpStatus";
-import { OrderModel } from "../models/order.model";
-import { OrderStatus } from "../constants/orderStatus";
+import auth from "../middleware/auth.mid.js";
+import { BAD_REQUEST } from "../constants/httpStatus.js";
+import { OrderModel } from "../models/order.model.js";
+import { OrderStatus } from "../constants/orderStatus.js";
 
 const router = Router();
 router.use(auth);
@@ -13,7 +13,7 @@ router.post(
   handler(async (req, res) => {
     const order = req.body;
 
-    if (order.items.length <= 0) res.status(BAD_REQUEST).send("The cart is empty!");
+    if (order.items.length <= 0) res.status(BAD_REQUEST).send("Cart Is Empty!");
 
     await OrderModel.deleteOne({
       user: req.user.id,
@@ -25,3 +25,5 @@ router.post(
     res.send(newOrder);
   })
 );
+
+export default router;
