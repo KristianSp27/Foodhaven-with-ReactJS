@@ -24,3 +24,7 @@ export default function Map({ readOnly, location, onChange }) {
     </div>
   );
 }
+
+function FindButtonAndMarker({ readOnly, location, onChange }) {
+  const [position, setPosition] = useState(location);
+}
