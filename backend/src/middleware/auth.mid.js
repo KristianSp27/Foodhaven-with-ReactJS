@@ -11,4 +11,6 @@ export default (req, res, next) => {
   } catch (error) {
     res.status(UNAUTHORIZED).send();
   }
+
+  return next();
 };
