@@ -40,4 +40,13 @@ function FindButtonAndMarker({ readOnly, location, onChange }) {
       toast.error(e.message);
     },
   });
+  return (
+    <>
+      {!readOnly && (
+        <button type="button" className={classes.find_location} onClick={() => map.locate()}>
+          Find my location
+        </button>
+      )}
+    </>
+  );
 }
