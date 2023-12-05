@@ -22,3 +22,8 @@ export const OrderItemSchema = new Schema(
     _id: false,
   }
 );
+
+OrderItemSchema.pre("validate", function (next) {
+  this.price = this.food.price * this.quantity;
+  next();
+});
