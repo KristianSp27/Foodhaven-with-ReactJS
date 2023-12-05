@@ -11,3 +11,14 @@ export const LatLngSchema = new Schema(
     _id: false,
   }
 );
+
+export const OrderItemSchema = new Schema(
+  {
+    food: { type: FoodModel.schema, required: true },
+    price: { type: Number, required: true },
+    quantity: { type: Number, required: true },
+  },
+  {
+    _id: false,
+  }
+);
