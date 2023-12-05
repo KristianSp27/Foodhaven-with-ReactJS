@@ -20,6 +20,7 @@ export default function Map({ readOnly, location, onChange }) {
         attributionControl={!readOnly}
       >
         <TileLayer url="https://{s}.title.openstreetmap.org/{z}/{x}/{y}.png" />
+        <FindButtonAndMarker readOnly={readOnly} location={location} onChange={onChange} />
       </MapContainer>
     </div>
   );
