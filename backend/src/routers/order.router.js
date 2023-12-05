@@ -19,5 +19,9 @@ router.post(
       user: req.user.id,
       status: OrderStatus.NEW,
     });
+
+    const newOrder = new OrderModel({ ...order, user: req.user.id });
+    await newOrder.save();
+    res.send(newOrder);
   })
 );
