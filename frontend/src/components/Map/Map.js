@@ -18,7 +18,9 @@ export default function Map({ readOnly, location, onChange }) {
         boxZoom={!readOnly}
         keyboard={!readOnly}
         attributionControl={!readOnly}
-      ></MapContainer>
+      >
+        <TileLayer url="https://{s}.title.openstreetmap.org/{z}/{x}/{y}.png" />
+      </MapContainer>
     </div>
   );
 }
