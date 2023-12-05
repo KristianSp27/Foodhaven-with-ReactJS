@@ -26,3 +26,7 @@
     border: none;
     border-top: 1px solid lightgrey;
 }
+
+.find_locaiton:hover {
+    background-color: whitesmoke;
+}
