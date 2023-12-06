@@ -19,17 +19,14 @@ export default function CartPage() {
             {cart.items.map((item) => (
               <li key={item.food.id}>
                 <div>
-                  <img src={`/foods/${item.food.imageUrl}`} alt={item.food.name} />
+                  <img src={`${item.food.imageUrl}`} alt={item.food.name} />
                 </div>
                 <div>
-                  <Link to={`/foods/${item.food.id}`}>{item.food.name}</Link>
+                  <Link to={`/food/${item.food.id}`}>{item.food.name}</Link>
                 </div>
 
                 <div>
-                  <select
-                    value={item.quantity}
-                    onChange={(e) => changeQuantity(item, Number(e.target.value))}
-                  >
+                  <select value={item.quantity} onChange={(e) => changeQuantity(item, Number(e.target.value))}>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -48,10 +45,7 @@ export default function CartPage() {
                 </div>
 
                 <div>
-                  <button
-                    className={classes.remove_button}
-                    onClick={() => removeFromCart(item.food.id)}
-                  >
+                  <button className={classes.remove_button} onClick={() => removeFromCart(item.food.id)}>
                     Remove
                   </button>
                 </div>
