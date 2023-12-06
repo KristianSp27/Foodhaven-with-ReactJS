@@ -4,33 +4,33 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import { toast } from "react-toastify";
 
-export default function Map({ readOnly, location, onChange }) {
+export default function Map({ readonly, location, onChange }) {
   return (
     <div className={classes.container}>
       <MapContainer
         className={classes.map}
         center={[0, 0]}
         zoom={1}
-        dragging={!readOnly}
-        touchZoom={!readOnly}
-        doubleClickZoom={!readOnly}
-        scrollWheelZoom={!readOnly}
-        boxZoom={!readOnly}
-        keyboard={!readOnly}
-        attributionControl={!readOnly}
+        dragging={!readonly}
+        touchZoom={!readonly}
+        doubleClickZoom={!readonly}
+        scrollWheelZoom={!readonly}
+        boxZoom={!readonly}
+        keyboard={!readonly}
+        attributionControl={false}
       >
-        <TileLayer url="https://{s}.title.openstreetmap.org/{z}/{x}/{y}.png" />
-        <FindButtonAndMarker readOnly={readOnly} location={location} onChange={onChange} />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <FindButtonAndMarker readonly={readonly} location={location} onChange={onChange} />
       </MapContainer>
     </div>
   );
 }
 
-function FindButtonAndMarker({ readOnly, location, onChange }) {
+function FindButtonAndMarker({ readonly, location, onChange }) {
   const [position, setPosition] = useState(location);
 
   useEffect(() => {
-    if (readOnly) {
+    if (readonly) {
       map.setView(position, 13);
       return;
     }
@@ -39,7 +39,7 @@ function FindButtonAndMarker({ readOnly, location, onChange }) {
 
   const map = useMapEvents({
     click(e) {
-      !readOnly && setPosition(e.latlng);
+      !readonly && setPosition(e.latlng);
     },
     locationfound(e) {
       setPosition(e.latlng);
@@ -49,9 +49,10 @@ function FindButtonAndMarker({ readOnly, location, onChange }) {
       toast.error(e.message);
     },
   });
+
   return (
     <>
-      {!readOnly && (
+      {!readonly && (
         <button type="button" className={classes.find_location} onClick={() => map.locate()}>
           Find my location
         </button>
@@ -65,9 +66,9 @@ function FindButtonAndMarker({ readOnly, location, onChange }) {
             },
           }}
           position={position}
-          draggable={!readOnly}
+          draggable={!readonly}
         >
-          <Popup>Shipping location</Popup>
+          <Popup>Shipping Location</Popup>
         </Marker>
       )}
     </>

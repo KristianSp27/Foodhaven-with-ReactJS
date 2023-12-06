@@ -9,14 +9,14 @@ export default function OrderItemsList({ order }) {
       <tbody>
         <tr>
           <td colSpan="5">
-            <h3>Order items: </h3>
+            <h3>Order Items:</h3>
           </td>
         </tr>
         {order.items.map((item) => (
           <tr key={item.food.id}>
             <td>
-              <Link to={`/foods/${item.food.id}`}>
-                <img src={`/foods/${item.food.imageUrl}`} />
+              <Link to={`/food/${item.food.id}`}>
+                <img src={item.food.imageUrl} />
               </Link>
             </td>
             <td>{item.food.name}</td>
