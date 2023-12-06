@@ -1,13 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
+
 import express from "express";
 import cors from "cors";
 import foodRouter from "./routers/food.router.js";
 import userRouter from "./routers/user.router.js";
-import oderRouter from "./routers/order.router.js";
+import orderRouter from "./routers/order.router.js";
 
-import { dbConnect } from "./config/database.config.js";
-dbConnect();
+import { dbconnect } from "./config/database.config.js";
+dbconnect();
 
 const app = express();
 app.use(express.json());
@@ -20,10 +21,9 @@ app.use(
 
 app.use("/api/foods", foodRouter);
 app.use("/api/users", userRouter);
-app.use("/api.orders", oderRouter);
+app.use("/api/orders", orderRouter);
 
 const PORT = 5000;
-
 app.listen(PORT, () => {
-  console.log("Listening on port " + PORT);
+  console.log("listening on port " + PORT);
 });
