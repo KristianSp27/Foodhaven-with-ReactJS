@@ -4,12 +4,10 @@ import { FoodModel } from "../models/food.model.js";
 import { sample_users } from "../data.js";
 import { sample_foods } from "../data.js";
 import bcrypt from "bcryptjs";
-
 const PASSWORD_HASH_SALT_ROUNDS = 10;
-
 set("strictQuery", true);
 
-export const dbConnect = async () => {
+export const dbconnect = async () => {
   try {
     connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
@@ -17,7 +15,7 @@ export const dbConnect = async () => {
     });
     await seedUsers();
     await seedFoods();
-    console.log("connected successfully");
+    console.log("connect successfully---");
   } catch (error) {
     console.log(error);
   }
@@ -30,10 +28,12 @@ async function seedUsers() {
     return;
   }
 
-  for (const user of sample_users) {
+  for (let user of sample_users) {
     user.password = await bcrypt.hash(user.password, PASSWORD_HASH_SALT_ROUNDS);
     await UserModel.create(user);
   }
+
+  console.log("Users seed is done!");
 }
 
 async function seedFoods() {
@@ -48,5 +48,5 @@ async function seedFoods() {
     await FoodModel.create(food);
   }
 
-  console.log("Foods seed is done!");
+  console.log("Foods seed Is Done!");
 }
