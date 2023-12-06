@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import classes from "./foodPage.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Tags from "../../components/Tags/Tags";
-import { getById } from "../../services/foodService";
-import StarRating from "../../components/StarRating/StarRating";
 import Price from "../../components/Price/Price";
+import StarRating from "../../components/StarRating/StarRating";
+import Tags from "../../components/Tags/Tags";
 import { useCart } from "../../hooks/useCart";
+import { getById } from "../../services/foodService";
+import classes from "./foodPage.module.css";
 import NotFound from "../../components/NotFound/NotFound";
-
 export default function FoodPage() {
   const [food, setFood] = useState({});
   const { id } = useParams();
@@ -25,17 +24,16 @@ export default function FoodPage() {
   return (
     <>
       {!food ? (
-        <NotFound message="Food not found!" linkText="Back to the homepage" />
+        <NotFound message="Food Not Found!" linkText="Back To Homepage" />
       ) : (
         <div className={classes.container}>
           <img className={classes.image} src={`${food.imageUrl}`} alt={food.name} />
 
           <div className={classes.details}>
             <div className={classes.header}>
-              <span className={classes.name}> {food.name} </span>
+              <span className={classes.name}>{food.name}</span>
               <span className={`${classes.favorite} ${food.favorite ? "" : classes.not}`}>❤</span>
             </div>
-
             <div className={classes.rating}>
               <StarRating stars={food.stars} size={25} />
             </div>
@@ -50,7 +48,7 @@ export default function FoodPage() {
 
             <div className={classes.cook_time}>
               <span>
-                Time to cook about <strong>{food.cookTime}</strong> minutes.
+                Time to cook about <strong>{food.cookTime}</strong> minutes
               </span>
             </div>
 
@@ -58,7 +56,7 @@ export default function FoodPage() {
               <Price price={food.price} />
             </div>
 
-            <button onClick={handleAddToCart}>Add to cart</button>
+            <button onClick={handleAddToCart}>Add To Cart</button>
           </div>
         </div>
       )}

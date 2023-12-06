@@ -13,7 +13,6 @@ export default function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState(initCart.items);
   const [totalPrice, setTotalPrice] = useState(initCart.totalPrice);
   const [totalCount, setTotalCount] = useState(initCart.totalCount);
-  //placeholder values in the upper 3 rows
 
   useEffect(() => {
     const totalPrice = sum(cartItems.map((item) => item.price));
@@ -45,13 +44,13 @@ export default function CartProvider({ children }) {
     setCartItems(filteredCartItems);
   };
 
-  const changeQuantity = (cartItem, newQuantity) => {
+  const changeQuantity = (cartItem, newQauntity) => {
     const { food } = cartItem;
 
     const changedCartItem = {
       ...cartItem,
-      quantity: newQuantity,
-      price: food.price * newQuantity,
+      quantity: newQauntity,
+      price: food.price * newQauntity,
     };
 
     setCartItems(cartItems.map((item) => (item.food.id === food.id ? changedCartItem : item)));
@@ -67,7 +66,14 @@ export default function CartProvider({ children }) {
   };
 
   return (
-    <CartContext.Provider value={{ cart: { items: cartItems, totalPrice, totalCount }, removeFromCart, changeQuantity, addToCart }}>
+    <CartContext.Provider
+      value={{
+        cart: { items: cartItems, totalPrice, totalCount },
+        removeFromCart,
+        changeQuantity,
+        addToCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
