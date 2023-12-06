@@ -15,7 +15,7 @@ export const dbconnect = async () => {
     });
     await seedUsers();
     await seedFoods();
-    console.log("connect successfully---");
+    console.log("Connected successfully---");
   } catch (error) {
     console.log(error);
   }
