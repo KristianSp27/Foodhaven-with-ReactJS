@@ -2,6 +2,7 @@ import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-payp
 import React, { useEffect } from "react";
 import { useLoading } from "../../hooks/useLoading";
 import { pay } from "../../services/orderService";
+import { useCart } from "../../hooks/useCart";
 
 export default function PaypalButtons({ order }) {
   return (
@@ -16,6 +17,7 @@ export default function PaypalButtons({ order }) {
 }
 
 function Buttons({ order }) {
+  const { clearCart } = useCart();
   const [{ isPending }] = usePayPalScriptReducer();
   const { showLoading, hideLoading } = useLoading();
   useEffect(() => {
@@ -39,6 +41,7 @@ function Buttons({ order }) {
     try {
       const payment = await actions.order.capture();
       const orderId = await pay(payment.id);
+      clearCart();
     } catch (error) {}
   };
 }
