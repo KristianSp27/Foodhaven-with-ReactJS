@@ -40,6 +40,8 @@ router.put(
     order.paymentId = paymentId;
     order.status = OrderStatus.PAID;
     await order.save();
+
+    res.send(order._id);
   })
 );
 
