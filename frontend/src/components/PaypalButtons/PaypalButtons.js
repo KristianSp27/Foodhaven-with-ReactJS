@@ -1,8 +1,10 @@
-import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import React, { useEffect } from "react";
 import { useLoading } from "../../hooks/useLoading";
 import { pay } from "../../services/orderService";
 import { useCart } from "../../hooks/useCart";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function PaypalButtons({ order }) {
   return (
@@ -18,6 +20,7 @@ export default function PaypalButtons({ order }) {
 
 function Buttons({ order }) {
   const { clearCart } = useCart();
+  const navigate = useNavigate();
   const [{ isPending }] = usePayPalScriptReducer();
   const { showLoading, hideLoading } = useLoading();
   useEffect(() => {
@@ -42,6 +45,16 @@ function Buttons({ order }) {
       const payment = await actions.order.capture();
       const orderId = await pay(payment.id);
       clearCart();
-    } catch (error) {}
+      toast.success("Payment processed successfully!", "Success");
+      navigate("/track/" + orderId);
+    } catch (error) {
+      toast.error("Payment processing failed.", "Error");
+    }
   };
+
+  const onError = (err) => {
+    toast.error("Payment failed.", "Error");
+  };
+
+  return <PayPalButtons createOrder={createOrder} onApprove={onApprove} onError={onError} />;
 }
