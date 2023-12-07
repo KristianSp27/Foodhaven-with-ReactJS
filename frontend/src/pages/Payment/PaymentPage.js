@@ -30,6 +30,10 @@ export default function PaymentPage() {
           <Title title="Your location" fontSize="1.6rem" />
           <Map readonly={true} location={order.addressLatLng} />
         </div>
+
+        <div className={classes.buttons_container}>
+          <div className={classes.buttons}></div>
+        </div>
       </div>
     </>
   );
