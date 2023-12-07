@@ -26,14 +26,31 @@ router.post(
   })
 );
 
-// router.get(
-//   "/newOrderForCurrentUser",
-//   handler(async (req, res) => {
-//     const order = await getNewOrderForCurrentUser(req);
-//     if (order) res.send(order);
-//     else res.status(BAD_REQUEST).send();
-//   })
-// );
+router.put(
+  //to update an existing item
+  "/pay",
+  handler(async (req, res) => {
+    const { paymentId } = req.body;
+    const order = await getNewOrderForCurrentUser(req);
+    if (!order) {
+      res.status(BAD_REQUEST).send("Order not found!");
+      return;
+    }
+
+    order.paymentId = paymentId;
+    order.status = OrderStatus.PAID;
+    await order.save();
+  })
+);
+
+router.get(
+  "/newOrderForCurrentUser",
+  handler(async (req, res) => {
+    const order = await getNewOrderForCurrentUser(req);
+    if (order) res.send(order);
+    else res.status(BAD_REQUEST).send();
+  })
+);
 
 const getNewOrderForCurrentUser = async (req) => await OrderModel.findOne({ user: req.user.id, status: OrderModel.NEW });
 
