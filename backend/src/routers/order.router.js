@@ -12,9 +12,9 @@ router.post(
   "/create",
   handler(async (req, res) => {
     const order = req.body;
-
+    console.log(order);
     if (order.items.length <= 0) res.status(BAD_REQUEST).send("The cart is empty!");
-
+    console.log(req.user.id);
     await OrderModel.deleteOne({
       user: req.user.id,
       status: OrderStatus.NEW,
@@ -26,14 +26,14 @@ router.post(
   })
 );
 
-router.get(
-  "/newOrderForCurrentUser",
-  handler(async (req, res) => {
-    const order = await getNewOrderForCurrentUser(req);
-    if (order) res.send(order);
-    else res.status(BAD_REQUEST).send();
-  })
-);
+// router.get(
+//   "/newOrderForCurrentUser",
+//   handler(async (req, res) => {
+//     const order = await getNewOrderForCurrentUser(req);
+//     if (order) res.send(order);
+//     else res.status(BAD_REQUEST).send();
+//   })
+// );
 
 const getNewOrderForCurrentUser = async (req) => await OrderModel.findOne({ user: req.user.id, status: OrderModel.NEW });
 

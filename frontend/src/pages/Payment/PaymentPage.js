@@ -16,6 +16,12 @@ export default function PaymentPage() {
       <div className={classes.container}>
         <div className={classes.content}>
           <Title title="Order form" fontSize="1.6rem" />
+          <div className={classes.summary}>
+            <div>
+              <h3>Address: </h3>
+              <span>{order.address}</span>
+            </div>
+          </div>
         </div>
       </div>
     </>
