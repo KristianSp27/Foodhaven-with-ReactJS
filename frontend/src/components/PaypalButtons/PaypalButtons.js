@@ -33,4 +33,10 @@ function Buttons({ order }) {
       ],
     });
   };
+
+  const onApprove = async (data, actions) => {
+    try {
+      const payment = await actions.order.capture();
+    } catch (error) {}
+  };
 }
