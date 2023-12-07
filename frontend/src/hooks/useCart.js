@@ -80,6 +80,7 @@ export default function CartProvider({ children }) {
         removeFromCart,
         changeQuantity,
         addToCart,
+        clearCart,
       }}
     >
       {children}
