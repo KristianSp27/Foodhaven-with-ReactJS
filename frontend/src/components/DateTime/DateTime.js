@@ -14,7 +14,7 @@ DateTime.defaultProps = {
 export default function DateTime({ date, options: { weekday, year, month, day, hour, minute, second } }) {
   var currentLocale = new Intl.DateTimeFormat().resolvedOptions().locale;
 
-  const getDate = () => {
+  const getDate = () =>
     new Intl.DateTimeFormat(currentLocale, {
       year,
       month,
@@ -24,6 +24,5 @@ export default function DateTime({ date, options: { weekday, year, month, day, h
       minute,
       second,
     }).format(Date.parse(date));
-  };
-  return <div>DateTime</div>;
+  return <>{getDate()}</>;
 }
