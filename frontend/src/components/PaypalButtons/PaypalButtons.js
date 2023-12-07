@@ -20,4 +20,17 @@ function Buttons({ order }) {
   useEffect(() => {
     isPending ? showLoading() : hideLoading();
   });
+
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            currency_code: "EUR",
+            value: order.totalPrice,
+          },
+        },
+      ],
+    });
+  };
 }
