@@ -1,6 +1,7 @@
 import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import React, { useEffect } from "react";
 import { useLoading } from "../../hooks/useLoading";
+import { pay } from "../../services/orderService";
 
 export default function PaypalButtons({ order }) {
   return (
@@ -37,6 +38,7 @@ function Buttons({ order }) {
   const onApprove = async (data, actions) => {
     try {
       const payment = await actions.order.capture();
+      const orderId = await pay(payment.id);
     } catch (error) {}
   };
 }
