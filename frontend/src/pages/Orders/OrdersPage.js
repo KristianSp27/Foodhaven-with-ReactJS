@@ -5,6 +5,7 @@ import classes from "./ordersPage.module.css";
 import Title from "../../components/Title/Title";
 import DateTime from "../../components/DateTime/DateTime";
 import Price from "../../components/Price/Price";
+import NotFound from "../../components/NotFound/NotFound";
 
 const initialState = {};
 
@@ -38,6 +39,9 @@ export default function OrdersPage() {
 
       {allStatus && (
         <div className={classes.all_status}>
+          <Link to="/orders" className={!filter ? classes.selected : ""}>
+            All
+          </Link>
           {allStatus.map((state) => (
             <Link key={state} className={state == filter ? classes.selected : ""} to={`/orders/${state}`}>
               {state}
@@ -45,6 +49,8 @@ export default function OrdersPage() {
           ))}
         </div>
       )}
+
+      {orders?.length === 0 && <NotFound linkRoute={filter ? "/orders" : "/"} linkText={filter ? "Show all" : "Go to the home page"} />}
 
       {orders &&
         orders.map((order) => (
