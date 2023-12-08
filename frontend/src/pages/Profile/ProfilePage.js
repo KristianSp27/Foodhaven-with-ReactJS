@@ -32,6 +32,16 @@ export default function ProfilePage() {
             })}
             error={errors.name}
           />
+          <Input
+            defaultValue={user.address}
+            type="text"
+            label="Address"
+            {...register("address", {
+              required: true,
+              minLength: 10,
+            })}
+            error={errors.address}
+          />
         </form>
       </div>
     </div>
