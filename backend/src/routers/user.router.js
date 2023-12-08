@@ -61,6 +61,12 @@ router.put(
   })
 );
 
+router.put(
+  "/changePassword",
+  auth,
+  handler(async (req, res) => {})
+);
+
 const generateTokenResponse = (user) => {
   const token = jwt.sign(
     {

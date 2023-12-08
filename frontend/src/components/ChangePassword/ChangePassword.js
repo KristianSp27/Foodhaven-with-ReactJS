@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Title from "../Title/Title";
 import Input from "../Input/Input";
+import Button from "../Button/Button";
 
 export default function ChangePassword() {
   const {
@@ -46,6 +47,8 @@ export default function ChangePassword() {
           })}
           error={errors.confirmNewPassword}
         />
+
+        <Button type="submit" text="Change" />
       </form>
     </div>
   );
