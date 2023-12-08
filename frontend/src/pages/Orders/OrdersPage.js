@@ -4,6 +4,7 @@ import { getAll } from "../../services/orderService";
 import classes from "./ordersPage.module.css";
 import Title from "../../components/Title/Title";
 import DateTime from "../../components/DateTime/DateTime";
+import Price from "../../components/Price/Price";
 
 const initialState = {};
 
@@ -50,6 +51,11 @@ export default function OrdersPage() {
             <div className={classes.footer}>
               <div>
                 <Link to={`/track/${order.id}`}>Show order</Link>
+              </div>
+              <div>
+                <span className={classes.price}>
+                  <Price price={order.totalPrice} />
+                </span>
               </div>
             </div>
           </div>
