@@ -55,6 +55,7 @@ router.put(
   auth,
   handler(async (req, res) => {
     const { name, address } = req.body;
+    const user = await UserModel.findByIdAndUpdate(req.user.id, { name, address }, { new: true });
   })
 );
 
