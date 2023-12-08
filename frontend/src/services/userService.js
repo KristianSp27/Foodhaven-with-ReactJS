@@ -18,7 +18,7 @@ export const logout = () => {
   localStorage.removeItem("user");
 };
 
-export const updatedProfile = async (user) => {
+export const updateProfile = async (user) => {
   const { data } = await axios.put("/api/users/updateProfile", user);
   localStorage.setItem("user", JSON.stringify(data));
   return data;

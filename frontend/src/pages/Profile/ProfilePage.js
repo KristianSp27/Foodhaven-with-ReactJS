@@ -5,6 +5,7 @@ import classes from "./profilePage.module.css";
 import Title from "../../components/Title/Title";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import ChangePassword from "../../components/ChangePassword/ChangePassword";
 
 export default function ProfilePage() {
   const {
@@ -13,10 +14,10 @@ export default function ProfilePage() {
     formState: { errors },
   } = useForm();
 
-  const { user } = useAuth();
+  const { user, updateProfile } = useAuth();
 
   const submit = (user) => {
-    //updates the profile
+    updateProfile(user);
   };
   return (
     <div className={classes.container}>
@@ -46,6 +47,7 @@ export default function ProfilePage() {
 
           <Button type="submit" text="Update" backgroundColor="#009e84" />
         </form>
+        <ChangePassword />
       </div>
     </div>
   );
