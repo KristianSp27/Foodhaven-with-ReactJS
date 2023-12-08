@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getAll } from "../../services/orderService";
+import { getAll, getAllStatus } from "../../services/orderService";
 import classes from "./ordersPage.module.css";
 import Title from "../../components/Title/Title";
 import DateTime from "../../components/DateTime/DateTime";
@@ -11,6 +11,8 @@ const initialState = {};
 const reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
+    case "ALL_STATUS_FETCHED":
+      return { ...state, allStatus: payload };
     case "ORDERS_FETCHED":
       return { ...state, orders: payload };
     default:
@@ -23,6 +25,9 @@ export default function OrdersPage() {
   const { filter } = useParams();
 
   useEffect(() => {
+    getAllStatus().then((status) => {
+      dispatch({ type: "ALL_STATUS_FETCHED", payload: status });
+    });
     getAll(filter).then((orders) => {
       dispatch({ type: "ORDERS_FETCHED", payload: orders });
     });
@@ -30,6 +35,16 @@ export default function OrdersPage() {
   return (
     <div className={classes.container}>
       <Title title="Orders" margin="1.5rem 0 0 .2rem" fontSize="1.9rem" />
+
+      {allStatus && (
+        <div className={classes.all_status}>
+          {allStatus.map((state) => (
+            <Link key={state} className={state == filter ? classes.selected : ""} to={`/orders/${state}`}>
+              {state}
+            </Link>
+          ))}
+        </div>
+      )}
 
       {orders &&
         orders.map((order) => (
