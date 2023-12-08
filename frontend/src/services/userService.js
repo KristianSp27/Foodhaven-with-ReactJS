@@ -23,3 +23,7 @@ export const updateProfile = async (user) => {
   localStorage.setItem("user", JSON.stringify(data));
   return data;
 };
+
+export const changePassword = async (passwords) => {
+  await axios.put("/api/users/changePassword", passwords);
+};
