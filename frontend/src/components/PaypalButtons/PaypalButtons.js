@@ -32,7 +32,7 @@ function Buttons({ order }) {
       purchase_units: [
         {
           amount: {
-            currency_code: "EUR",
+            currency_code: "USD",
             value: order.totalPrice,
           },
         },

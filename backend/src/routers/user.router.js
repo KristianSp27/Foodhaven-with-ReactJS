@@ -5,6 +5,7 @@ import { BAD_REQUEST } from "../constants/httpStatus.js";
 import handler from "express-async-handler";
 import { UserModel } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import auth from "../middleware/auth.mid.js";
 
 const PASSWORD_HASH_SALT_ROUNDS = 10;
 
@@ -48,6 +49,8 @@ router.post(
     res.send(generateTokenResponse(result));
   })
 );
+
+router.put("/updateProfile", auth);
 
 const generateTokenResponse = (user) => {
   const token = jwt.sign(
