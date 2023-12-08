@@ -36,6 +36,16 @@ export default function ChangePassword() {
           })}
           error={errors.newPassword}
         />
+
+        <Input
+          type="password"
+          label="Confirm password"
+          {...register("confirmNewPassword", {
+            required: true,
+            validate: (value) => (value != getValues("newPassword") ? "The passwords do not match." : true),
+          })}
+          error={errors.confirmNewPassword}
+        />
       </form>
     </div>
   );
