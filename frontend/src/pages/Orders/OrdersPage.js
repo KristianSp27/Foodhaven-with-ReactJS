@@ -1,11 +1,14 @@
 import React, { useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
+import { getAll } from "../../services/orderService";
 
 const initialState = {};
 
 const reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
+    case "ORDERS_FETCHED":
+      return { ...state, orders: payload };
     default:
       return state;
   }
@@ -15,6 +18,10 @@ export default function OrdersPage() {
 
   const { filter } = useParams();
 
-  useEffect(() => {}, [filter]);
+  useEffect(() => {
+    getAll(filter).then((orders) => {
+      dispatch({ type: "ORDERS_FETCHED", payload: orders });
+    });
+  }, [filter]);
   return <div>OrdersPage</div>;
 }
