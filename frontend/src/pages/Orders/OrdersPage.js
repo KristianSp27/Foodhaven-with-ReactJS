@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAll } from "../../services/orderService";
 import classes from "./ordersPage.module.css";
 import Title from "../../components/Title/Title";
@@ -39,6 +39,18 @@ export default function OrdersPage() {
                 <DateTime date={order.createdAt} />
               </span>
               <span>{order.status}</span>
+            </div>
+            <div className={classes.items}>
+              {order.items.map((item) => (
+                <Link key={item.food.id} to={`/food/${item.food.id}`}>
+                  <img src={item.food.imageUrl} alt={item.food.name} />
+                </Link>
+              ))}
+            </div>
+            <div className={classes.footer}>
+              <div>
+                <Link to={`/track/${order.id}`}>Show order</Link>
+              </div>
             </div>
           </div>
         ))}
