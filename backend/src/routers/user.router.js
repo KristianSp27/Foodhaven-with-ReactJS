@@ -64,7 +64,27 @@ router.put(
 router.put(
   "/changePassword",
   auth,
-  handler(async (req, res) => {})
+  handler(async (req, res) => {
+    const { currentPassword, newPassword } = req.body;
+    const user = await UserModel.findById(req.user.id);
+
+    if (!user) {
+      res.status(BAD_REQUEST).send("Password change has failed.");
+      return;
+    }
+
+    const equal = await bcrypt.compare(currentPassword, user.password);
+
+    if (!equal) {
+      res.status(BAD_REQUEST).send("The current password is not correct!");
+      return;
+    }
+
+    user.password = await bcrypt.hash(newPassword, PASSWORD_HASH_SALT_ROUNDS);
+    await user.save();
+
+    res.send();
+  })
 );
 
 const generateTokenResponse = (user) => {
