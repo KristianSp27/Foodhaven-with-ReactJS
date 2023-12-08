@@ -50,7 +50,13 @@ router.post(
   })
 );
 
-router.put("/updateProfile", auth);
+router.put(
+  "/updateProfile",
+  auth,
+  handler(async (req, res) => {
+    const { name, address } = req.body;
+  })
+);
 
 const generateTokenResponse = (user) => {
   const token = jwt.sign(
