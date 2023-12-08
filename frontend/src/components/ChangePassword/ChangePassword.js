@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Title from "../Title/Title";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function ChangePassword() {
   const {
@@ -12,8 +13,9 @@ export default function ChangePassword() {
     formState: { errors },
   } = useForm();
 
+  const { changePassword } = useAuth();
   const submit = (passwords) => {
-    //changes the password
+    changePassword(passwords);
   };
   return (
     <div>
