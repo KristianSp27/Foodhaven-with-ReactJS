@@ -13,9 +13,9 @@ router.post(
   "/create",
   handler(async (req, res) => {
     const order = req.body;
-    console.log(order);
-    if (order.items.length <= 0) res.status(BAD_REQUEST).send("The cart is empty!");
-    console.log(req.user.id);
+
+    if (order.items.length <= 0) res.status(BAD_REQUEST).send("Cart Is Empty!");
+
     await OrderModel.deleteOne({
       user: req.user.id,
       status: OrderStatus.NEW,
@@ -33,12 +33,12 @@ router.put(
     const { paymentId } = req.body;
     const order = await getNewOrderForCurrentUser(req);
     if (!order) {
-      res.status(BAD_REQUEST).send("Order not found!");
+      res.status(BAD_REQUEST).send("Order Not Found!");
       return;
     }
 
     order.paymentId = paymentId;
-    order.status = OrderStatus.PAID;
+    order.status = OrderStatus.PAYED;
     await order.save();
 
     res.send(order._id);
@@ -54,6 +54,10 @@ router.get(
     const filter = {
       _id: orderId,
     };
+
+    if (!user.isAdmin) {
+      filter.user = user._id;
+    }
 
     const order = await OrderModel.findOne(filter);
 
@@ -84,26 +88,7 @@ router.get(
     const user = await UserModel.findById(req.user.id);
     const filter = {};
 
-    if (status) filter.status = status;
-
-    const orders = await OrderModel.find(filter).sort("-createdAt");
-    res.send(orders);
-  })
-);
-
-router.get("allstatus", (req, res) => {
-  const allStatus = Object.values(OrderStatus);
-  res.send(allStatus);
-});
-
-router.get(
-  "/:status?",
-  handler(async (req, res) => {
-    const status = req.params.status;
-    const user = await UserModel.findById(req.user.id);
-    const filter = {};
-
-    if (!user.isAdmin) filter.user = usser._id;
+    if (!user.isAdmin) filter.user = user._id;
     if (status) filter.status = status;
 
     const orders = await OrderModel.find(filter).sort("-createdAt");
