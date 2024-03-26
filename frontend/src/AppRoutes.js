@@ -54,6 +54,14 @@ export default function AppRoutes() {
           </AuthRoute>
         }
       />
+      <Route
+        path="/orders"
+        element={
+          <AuthRoute>
+            <OrdersPage />
+          </AuthRoute>
+        }
+      />
     </Routes>
   );
 }
