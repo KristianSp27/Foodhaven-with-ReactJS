@@ -54,14 +54,6 @@ export default function AppRoutes() {
           </AuthRoute>
         }
       />
-      <Route
-        path="/orders/:filter?"
-        element={
-          <AuthRoute>
-            <OrdersPage />
-          </AuthRoute>
-        }
-      />
     </Routes>
   );
 }
