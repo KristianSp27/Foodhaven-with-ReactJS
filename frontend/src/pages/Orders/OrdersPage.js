@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 
+const initialState = {};
 const reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
@@ -7,7 +8,6 @@ const reducer = (state, action) => {
       return state;
   }
 };
-const initialState = {};
 
 export default function OrdersPage() {
   const [{ allStatus, orders }, dispatch] = useReducer(reducer, initialState);
