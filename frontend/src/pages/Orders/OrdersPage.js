@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
 
 const initialState = {};
@@ -14,5 +14,7 @@ export default function OrdersPage() {
   const [{ allStatus, orders }, dispatch] = useReducer(reducer, initialState);
 
   const { filter } = useParams();
+
+  useEffect(() => {}, [filter]);
   return <div>OrdersPage</div>;
 }

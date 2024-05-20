@@ -96,5 +96,19 @@ router.get(
   })
 );
 
+router.get(
+  "/:status?",
+  handler(async (req, res) => {
+    const status = req.params.status;
+    const user = await UserModel.findById(req.user.id);
+    const filter = {};
+
+    if (!user.isAdmin) filter.user = user._id;
+    if (status) filter.status = status;
+
+    const orders = await OrderModel.find(filter).sort("-createdAt");
+  })
+);
+
 const getNewOrderForCurrentUser = async (req) => await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
 export default router;
