@@ -6,6 +6,8 @@ const initialState = {};
 const reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
+    case "ORDERS_FETCHED":
+      return { ...state, orders: payload };
     default:
       return state;
   }
