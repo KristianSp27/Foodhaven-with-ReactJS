@@ -107,6 +107,7 @@ router.get(
     if (status) filter.status = status;
 
     const orders = await OrderModel.find(filter).sort("-createdAt");
+    res.send(orders);
   })
 );
 
