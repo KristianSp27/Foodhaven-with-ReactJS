@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
-import { getAll } from "../../services/orderService";
+import { getAll, getAllStatus } from "../../services/orderService";
 import classes from "./ordersPage.module.css";
 import Title from "../../components/Title/Title";
 
