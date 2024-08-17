@@ -19,7 +19,7 @@ export default function OrderTrackPage() {
       });
   }, []);
 
-  if (!orderId) return <NotFound message="Order not found" linkText="Go to the home page" />;
+  if (!orderId) return <NotFound message="Order Not Found" linkText="Go To Home Page" />;
 
   return (
     order && (
@@ -40,7 +40,7 @@ export default function OrderTrackPage() {
               {order.address}
             </div>
             <div>
-              <strong>Status</strong>
+              <strong>State</strong>
               {order.status}
             </div>
             {order.paymentId && (
@@ -55,13 +55,13 @@ export default function OrderTrackPage() {
         </div>
 
         <div>
-          <Title title="Your location" fontSize="1.6rem" />
+          <Title title="Your Location" fontSize="1.6rem" />
           <Map location={order.addressLatLng} readonly={true} />
         </div>
 
         {order.status === "NEW" && (
           <div className={classes.payment}>
-            <Link to="/payment">Proceed to payment</Link>
+            <Link to="/payment">Go To Payment</Link>
           </div>
         )}
       </div>
