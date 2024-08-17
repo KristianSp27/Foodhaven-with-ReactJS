@@ -1,8 +1,4 @@
-import {
-  PayPalButtons,
-  PayPalScriptProvider,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
+import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import React, { useEffect } from "react";
 import { useLoading } from "../../hooks/useLoading";
 import { pay } from "../../services/orderService";
@@ -14,8 +10,7 @@ export default function PaypalButtons({ order }) {
   return (
     <PayPalScriptProvider
       options={{
-        clientId:
-          "AVEufzP6sGrUpXz_pa2qFeMODsMdjSMuk1r-N8i7OWweimdH6qFjKnkZqBE_AcXQxcp52qppe3F1k7jT",
+        clientId: "ATEQWrK4wIEniqiEMfssBdsMYfKBHs4AcC4Z49Ljt6TiBNGp7_b82TtZEMHHbmN_hQNpSjEj97eKexeh",
       }}
     >
       <Buttons order={order} />
@@ -50,15 +45,15 @@ function Buttons({ order }) {
       const payment = await actions.order.capture();
       const orderId = await pay(payment.id);
       clearCart();
-      toast.success("Payment processed successfully!", "Success");
+      toast.success("Payment Saved Successfully", "Success");
       navigate("/track/" + orderId);
     } catch (error) {
-      toast.error("Payment processing failed.", "Error");
+      toast.error("Payment Save Failed", "Error");
     }
   };
 
   const onError = (err) => {
-    toast.error("Payment failed.", "Error");
+    toast.error("Payment Failed", "Error");
   };
 
   return <PayPalButtons createOrder={createOrder} onApprove={onApprove} onError={onError} />;
