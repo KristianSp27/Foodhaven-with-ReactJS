@@ -44,7 +44,7 @@ export default function OrdersPage() {
             All
           </Link>
           {allStatus.map((state) => (
-            <Link key={state} className={state == filter ? classes.selected : ""} to={`/orders/${state}`}>
+            <Link key={state} className={state === filter ? classes.selected : ""} to={`/orders/${state}`}>
               {state}
             </Link>
           ))}
