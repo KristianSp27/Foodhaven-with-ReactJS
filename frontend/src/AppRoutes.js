@@ -55,7 +55,7 @@ export default function AppRoutes() {
         }
       />
       <Route
-        path="/orders:filter?"
+        path="/orders/:filter?"
         element={
           <AuthRoute>
             <OrdersPage />
