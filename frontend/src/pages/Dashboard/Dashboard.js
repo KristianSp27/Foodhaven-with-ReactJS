@@ -4,5 +4,5 @@ import classes from "./dashboard.module.css";
 
 export default function Dashboard() {
   const { user } = useAuth();
-  return <div>Dashboard</div>;
+  return <div className={classes.container}>Dashboard</div>;
 }
