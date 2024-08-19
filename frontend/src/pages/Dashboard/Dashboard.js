@@ -13,6 +13,7 @@ export default function Dashboard() {
           .map((item) => (
             <Link to={item.url} style={{ backgroundColor: item.backgroundColor, color: item.color }}>
               <img src={item.imageUrl} alt={item.title} />
+              <h2>{item.title}</h2>
             </Link>
           ))}
       </div>
