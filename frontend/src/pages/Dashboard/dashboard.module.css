@@ -4,3 +4,9 @@
     max-width: 70rem;
     width: 100%;
 }
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
