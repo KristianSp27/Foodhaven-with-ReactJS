@@ -76,9 +76,9 @@ export default function AppRoutes() {
       <Route
         path="/admin/foods/:searchTerm?"
         element={
-          <AuthRoute>
+          <AdminRoute>
             <Dashboard />
-          </AuthRoute>
+          </AdminRoute>
         }
       />
     </Routes>
