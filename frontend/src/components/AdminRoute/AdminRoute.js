@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function AdminRoute() {
+function AdminRoute() {
   return <div>AdminRoute</div>;
 }
