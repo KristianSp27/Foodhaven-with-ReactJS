@@ -34,6 +34,7 @@ export default function FoodsAdminPage() {
         <Link to="/admin/addFood" className={classes.add_food}>
           Add food +
         </Link>
+        <FoodsNotFound />
       </div>
     </div>
   );
