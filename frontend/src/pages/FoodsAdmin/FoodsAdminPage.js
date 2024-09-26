@@ -3,6 +3,7 @@ import classes from "./foodsAdminPage.module.css";
 import { useParams } from "react-router-dom";
 import { getAll, search } from "../../services/foodService";
 import NotFound from "../../components/NotFound/NotFound";
+import Title from "../../components/Title/Title";
 
 export default function FoodsAdminPage() {
   const [foods, setFoods] = useState();
@@ -26,5 +27,11 @@ export default function FoodsAdminPage() {
       <NotFound linkRoute="/dashboard" linkText="Return to the dashboard" />
     );
   };
-  return <div>FoodsAdminPage</div>;
+  return (
+    <div className={classes.container}>
+      <div className={classes.list}>
+        <Title title="Manage the foods" margin="1rem auto" />
+      </div>
+    </div>
+  );
 }
