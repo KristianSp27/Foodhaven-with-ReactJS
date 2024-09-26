@@ -13,6 +13,7 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import OrdersPage from "./pages/Orders/OrdersPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AdminRoute from "./components/AdminRoute/AdminRoute";
+import FoodsAdminPage from "./pages/FoodsAdmin/FoodsAdminPage";
 
 export default function AppRoutes() {
   return (
@@ -77,7 +78,7 @@ export default function AppRoutes() {
         path="/admin/foods/:searchTerm?"
         element={
           <AdminRoute>
-            <Dashboard />
+            <FoodsAdminPage />
           </AdminRoute>
         }
       />
