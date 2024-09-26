@@ -13,3 +13,5 @@ const AdminRouteExport = ({ children }) => (
     <AdminRoute>{children}</AdminRoute>
   </AuthRoute>
 );
+
+export default AdminRouteExport;
