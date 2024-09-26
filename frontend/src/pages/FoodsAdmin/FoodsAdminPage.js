@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import classes from "./foodsAdminPage.module.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAll, search } from "../../services/foodService";
 import NotFound from "../../components/NotFound/NotFound";
 import Title from "../../components/Title/Title";
@@ -31,6 +31,9 @@ export default function FoodsAdminPage() {
     <div className={classes.container}>
       <div className={classes.list}>
         <Title title="Manage the foods" margin="1rem auto" />
+        <Link to="/admin/addFood" className={classes.add_food}>
+          Add food +
+        </Link>
       </div>
     </div>
   );
