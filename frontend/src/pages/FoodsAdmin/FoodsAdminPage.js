@@ -15,5 +15,9 @@ export default function FoodsAdminPage() {
     const foods = searchTerm ? await search(searchTerm) : await getAll();
     setFoods(foods);
   };
+
+  const FoodsNotFound = () => {
+    if (foods && foods.length > 0) return;
+  };
   return <div>FoodsAdminPage</div>;
 }
