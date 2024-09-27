@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { getAll, search } from "../../services/foodService";
 import NotFound from "../../components/NotFound/NotFound";
 import Title from "../../components/Title/Title";
+import Price from "../../components/Price/Price";
 
 export default function FoodsAdminPage() {
   const [foods, setFoods] = useState();
@@ -34,6 +35,7 @@ export default function FoodsAdminPage() {
         <Link to="/admin/addFood" className={classes.add_food}>
           Add food +
         </Link>
+        <Price price={foods.price} />
         <FoodsNotFound />
       </div>
     </div>
