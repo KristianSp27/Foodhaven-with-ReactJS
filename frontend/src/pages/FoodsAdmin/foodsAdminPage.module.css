@@ -9,3 +9,12 @@
     margin: 1rem;
     max-width: 70rem;
 }
+
+a.add_food {
+    display: inline-block;
+    background: darkred;
+    color: white;
+    padding: 0.7rem;
+    margin: 0.8rem 0;
+    border-radius: 1.5rem;
+}
