@@ -31,16 +31,23 @@ export default function FoodsAdminPage() {
   return (
     <div className={classes.container}>
       <div className={classes.list}>
-        <Title title="Manage the foods" margin="1rem auto" />
+        <Title title="Manage Foods" margin="1rem auto" />
         <Link to="/admin/addFood" className={classes.add_food}>
-          Add food +
+          Add Food +
         </Link>
-        <Price price={foods.price} />
-        <div className={classes.actions}>
-          <Link to={"/admin/editFood/" + foods.id}>Edit</Link>
-          <Link>Delete</Link>
-        </div>
         <FoodsNotFound />
+        {foods &&
+          foods.map((food) => (
+            <div key={food.id} className={classes.list_item}>
+              <img src={food.imageUrl} alt={food.name} />
+              <Link to={"/food/" + food.id}>{food.name}</Link>
+              <Price price={food.price} />
+              <div className={classes.actions}>
+                <Link to={"/admin/editFood/" + food.id}>Edit</Link>
+                <Link>Delete</Link>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );
