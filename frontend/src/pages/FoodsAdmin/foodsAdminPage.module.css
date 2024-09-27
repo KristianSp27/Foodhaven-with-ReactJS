@@ -42,3 +42,8 @@ a.add_food:hover {
     border-radius: 100rem;
     object-fit: cover;
 }
+
+.actions > a {
+    margin-right: 1rem;
+    color: darkblue;
+}
