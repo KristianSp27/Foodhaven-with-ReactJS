@@ -33,7 +33,7 @@ export default function FoodsAdminPage() {
       <div className={classes.list}>
         <Title title="Manage Foods" margin="1rem auto" />
         <Link to="/admin/addFood" className={classes.add_food}>
-          Add Food +
+          Add Food
         </Link>
         <FoodsNotFound />
         {foods &&
