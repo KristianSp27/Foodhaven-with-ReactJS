@@ -4,3 +4,8 @@
     margin-top: 1rem;
     margin-bottom: 10rem;
 }
+
+.list {
+    margin: 1rem;
+    max-width: 70rem;
+}
