@@ -35,3 +35,10 @@ a.add_food:hover {
     align-items: center;
     justify-content: center;
 }
+
+.list_item img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100rem;
+    object-fit: cover;
+}
