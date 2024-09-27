@@ -38,6 +38,7 @@ export default function FoodsAdminPage() {
         <Price price={foods.price} />
         <div className={classes.actions}>
           <Link to={"/admin/editFood/" + foods.id}>Edit</Link>
+          <Link>Delete</Link>
         </div>
         <FoodsNotFound />
       </div>
