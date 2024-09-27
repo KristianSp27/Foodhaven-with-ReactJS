@@ -47,3 +47,7 @@ a.add_food:hover {
     margin-right: 1rem;
     color: darkblue;
 }
+
+.actions > a:hover {
+    cursor: pointer;
+}
