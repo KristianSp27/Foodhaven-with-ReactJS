@@ -3,6 +3,7 @@ import classes from "./foodEdit.module.css";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { getById } from "../../services/foodService";
+import Title from "../../components/Title/Title";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
@@ -22,5 +23,11 @@ export default function FoodEditPage() {
       reset(food);
     });
   }, [foodId]);
-  return <div>FoodEditPage</div>;
+  return (
+    <div className={classes.container}>
+      <div className={classes.content}>
+        <Title title={isEditMode ? "Edit food" : "Add food"} />
+      </div>
+    </div>
+  );
 }
