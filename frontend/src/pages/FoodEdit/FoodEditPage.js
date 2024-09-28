@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { getById } from "../../services/foodService";
 import Title from "../../components/Title/Title";
+import InputContainer from "../../components/InputContainer/InputContainer";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
@@ -26,11 +27,16 @@ export default function FoodEditPage() {
 
   const submit = () => {};
 
+  const upload = () => {};
+
   return (
     <div className={classes.container}>
       <div className={classes.content}>
         <Title title={isEditMode ? "Edit food" : "Add food"} />
         <form onSubmit={handleSubmit(submit)} noValidate></form>
+        <InputContainer label="Select image">
+          <input type="file" onChange={upload} accept="image/jpeg" />
+        </InputContainer>
       </div>
     </div>
   );
