@@ -24,15 +24,19 @@ export default function FoodsAdminPage() {
   const FoodsNotFound = () => {
     if (foods && foods.length > 0) return;
 
-    return searchTerm ? <NotFound linkRoute="/admin/foods" linkText="Show All" /> : <NotFound linkRoute="/dashboard" linkText="Back to dashboard!" />;
+    return searchTerm ? (
+      <NotFound linkRoute="/admin/foods" linkText="Show All" />
+    ) : (
+      <NotFound linkRoute="/dashboard" linkText="Back to the dashboard!" />
+    );
   };
 
   const deleteFood = async (food) => {
-    const confirmed = window.confirm(`Delete Food ${food.name}?`);
+    const confirmed = window.confirm(`Delete food ${food.name}?`);
     if (!confirmed) return;
 
     await deleteById(food.id);
-    toast.success(`"${food.name}" has Been Removed!`);
+    toast.success(`"${food.name}" has been removed!`);
     setFoods(foods.filter((f) => f.id !== food.id));
   };
 
