@@ -91,6 +91,14 @@ export default function AppRoutes() {
           </AdminRoute>
         }
       />
+      <Route
+        path="/admin/editFood/:foodId"
+        element={
+          <AdminRoute>
+            <FoodEditPage />
+          </AdminRoute>
+        }
+      />
     </Routes>
   );
 }
