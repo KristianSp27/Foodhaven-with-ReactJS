@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import classes from "./foodEdit.module.css";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { getById } from "../../services/foodService";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
@@ -12,5 +14,13 @@ export default function FoodEditPage() {
     formState: { errors },
     reset,
   } = useForm();
+
+  useEffect(() => {
+    if (!isEditMode) return;
+    getById(foodId).then((food) => {
+      if (!food) return;
+      reset(food);
+    });
+  }, [foodId]);
   return <div>FoodEditPage</div>;
 }
