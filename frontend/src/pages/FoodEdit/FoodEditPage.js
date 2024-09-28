@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getById } from "../../services/foodService";
 import Title from "../../components/Title/Title";
 import InputContainer from "../../components/InputContainer/InputContainer";
+import Input from "../../components/Input/Input";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
@@ -45,6 +46,8 @@ export default function FoodEditPage() {
               <img src={imageUrl} alt="Uploaded image" />
             </a>
           )}
+
+          <Input type="text" label="Name" {...register("name", { required: true, minLength: 5 })} error={errors.name} />
         </form>
       </div>
     </div>
