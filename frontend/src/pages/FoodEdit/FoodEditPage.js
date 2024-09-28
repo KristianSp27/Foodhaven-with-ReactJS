@@ -23,10 +23,14 @@ export default function FoodEditPage() {
       reset(food);
     });
   }, [foodId]);
+
+  const submit = () => {};
+
   return (
     <div className={classes.container}>
       <div className={classes.content}>
         <Title title={isEditMode ? "Edit food" : "Add food"} />
+        <form onSubmit={handleSubmit(submit)} noValidate></form>
       </div>
     </div>
   );
