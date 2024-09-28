@@ -39,6 +39,12 @@ export default function FoodEditPage() {
           <InputContainer label="Select image">
             <input type="file" onChange={upload} accept="image/jpeg" />
           </InputContainer>
+
+          {imageUrl && (
+            <a href={imageUrl} className={classes.image_link} target="blank">
+              <img src={imageUrl} alt="Uploaded image" />
+            </a>
+          )}
         </form>
       </div>
     </div>
