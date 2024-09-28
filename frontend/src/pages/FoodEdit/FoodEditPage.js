@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import classes from "./foodEdit.module.css";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getById } from "../../services/foodService";
 import Title from "../../components/Title/Title";
 import InputContainer from "../../components/InputContainer/InputContainer";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
+  const [imageUrl, setImageUrl] = useState();
   const isEditMode = !!foodId;
 
   const {
@@ -22,6 +23,7 @@ export default function FoodEditPage() {
     getById(foodId).then((food) => {
       if (!food) return;
       reset(food);
+      setImageUrl(food.imageUrl);
     });
   }, [foodId]);
 
