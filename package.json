@@ -19,6 +19,7 @@
     "@babel/preset-env": "7.22.5"
   },
   "dependencies": {
-    "@paypal/paypal-js": "^8.1.2"
+    "@paypal/paypal-js": "^8.1.2",
+    "@paypal/react-paypal-js": "^8.7.0"
   }
 }
