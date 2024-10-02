@@ -1,4 +1,4 @@
-import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/paypal-js";
+import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import React, { useEffect } from "react";
 import { useLoading } from "../../hooks/useLoading";
 import { pay } from "../../services/orderService";
