@@ -4,7 +4,7 @@ import { getNewOrderForCurrentUser } from "../../services/orderService";
 import Title from "../../components/Title/Title";
 import OrderItemsList from "../../components/OrderItemsList/OrderItemsList";
 import Map from "../../components/Map/Map";
-import PaypalButtons from "../../components/PaypalButtons/PaypalButtons";
+import PaypalButtons from "../../components/PaypalButtons/PaypalButtons.js";
 
 export default function PaymentPage() {
   const [order, setOrder] = useState();
