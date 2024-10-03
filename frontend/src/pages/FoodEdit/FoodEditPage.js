@@ -6,6 +6,7 @@ import { getById } from "../../services/foodService";
 import Title from "../../components/Title/Title";
 import InputContainer from "../../components/InputContainer/InputContainer";
 import Input from "../../components/Input/Input";
+import { required } from "nodemon/lib/config";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
@@ -50,7 +51,7 @@ export default function FoodEditPage() {
           <Input type="text" label="Name" {...register("name", { required: true, minLength: 5 })} error={errors.name} />
           <Input type="number" label="Price" {...register("price", { required: true })} error={errors.price} />
           <Input type="text" label="Tags" {...register("tags")} error={errors.tags} />
-          <Input type="text" label="Origins" {...register("origins")} error={errors.origins} />
+          <Input type="text" label="Origins" {...register("origins", { required: true })} error={errors.origins} />
         </form>
       </div>
     </div>
