@@ -6,7 +6,6 @@ import { getById } from "../../services/foodService";
 import Title from "../../components/Title/Title";
 import InputContainer from "../../components/InputContainer/InputContainer";
 import Input from "../../components/Input/Input";
-import { required } from "nodemon/lib/config";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
