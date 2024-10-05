@@ -51,6 +51,7 @@ export default function FoodEditPage() {
           <Input type="number" label="Price" {...register("price", { required: true })} error={errors.price} />
           <Input type="text" label="Tags" {...register("tags")} error={errors.tags} />
           <Input type="text" label="Origins" {...register("origins", { required: true })} error={errors.origins} />
+          <Input type="text" label="Cooking time" {...register("cooktime", { required: true })} error={errors.cookTime} />
         </form>
       </div>
     </div>
