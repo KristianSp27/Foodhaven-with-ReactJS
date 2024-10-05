@@ -6,6 +6,7 @@ import { getById } from "../../services/foodService";
 import Title from "../../components/Title/Title";
 import InputContainer from "../../components/InputContainer/InputContainer";
 import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
@@ -52,6 +53,8 @@ export default function FoodEditPage() {
           <Input type="text" label="Tags" {...register("tags")} error={errors.tags} />
           <Input type="text" label="Origins" {...register("origins", { required: true })} error={errors.origins} />
           <Input type="text" label="Cooking time" {...register("cooktime", { required: true })} error={errors.cookTime} />
+
+          <Button type="submit" text={isEditMode ? "Update" : "Create"} />
         </form>
       </div>
     </div>
