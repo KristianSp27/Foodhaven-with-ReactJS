@@ -29,7 +29,6 @@ app.use("/api/orders", orderRouter);
 
 const publicFolder = path.join(__dirname, "public");
 app.use(express.static(publicFolder));
-app.use("/icons", express.static(join(__dirname, "/public/icons")));
 app.get("*", (req, res) => {
   const indexFilePath = path.join(publicFolder, "index.html");
   res.sendFile(indexFilePath);
