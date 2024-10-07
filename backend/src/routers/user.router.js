@@ -101,7 +101,7 @@ const generateTokenResponse = (user) => {
   );
 
   return {
-    id: user.id,
+    _id: user.id,
     email: user.email,
     name: user.name,
     address: user.address,
