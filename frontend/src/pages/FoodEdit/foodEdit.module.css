@@ -3,3 +3,10 @@
     justify-content: center;
     margin-bottom: 10rem;
 }
+
+.content, form {
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+    width: 100%;
+}
