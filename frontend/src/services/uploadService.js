@@ -20,4 +20,6 @@ const getImage = async (event) => {
     toast.error("Only JPG type is allowed!", "File type error");
     return null;
   }
+
+  return file;
 };
