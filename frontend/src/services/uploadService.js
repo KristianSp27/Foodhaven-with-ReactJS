@@ -12,8 +12,10 @@ export const uploadImage = async (event) => {
   const response = await axios.post("api/upload", formData, {
     onUploadProgress: ({ progress }) => {
       if (toastId) toast.update(toastId, { progress });
+      else toastId = toast.success("Uploading...", { progress });
     },
   });
+  toast.dismiss(toastId);
 };
 
 const getImage = async (event) => {
