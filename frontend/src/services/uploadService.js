@@ -1,9 +1,19 @@
+import axios from "axios";
 import { toast } from "react-toastify";
 
 export const uploadImage = async (event) => {
   let toastId = null;
 
   const image = await getImage(event);
+  if (!image) return null;
+
+  const formData = new FormData();
+  formData.append("image", image, image.name);
+  const response = await axios.post("api/upload", formData, {
+    onUploadProgress: ({ progress }) => {
+      if (toastId) toast.update(toastId, { progress });
+    },
+  });
 };
 
 const getImage = async (event) => {
