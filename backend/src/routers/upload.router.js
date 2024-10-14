@@ -1,6 +1,7 @@
 import { Router } from "express";
 import admin from "../middleware/admin.mid";
 import multer from "multer";
+import handler from "express-async-handler";
 
 const router = Router();
 const upload = multer();
