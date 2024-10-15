@@ -20,6 +20,7 @@ router.post(
     }
 
     const imageUrl = await uploadImageToCloudinary(req.file?.buffer);
+    res.send(imageUrl);
   })
 );
 
