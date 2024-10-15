@@ -29,9 +29,11 @@ const uploadImageToCloudinary = (imageBuffer) => {
   return new Promise((resolve, reject) => {
     if (!imageBuffer) reject(null);
 
-    cloudinary.uploader((error, result) => {
-      if (error || !result) reject(error);
-      else resolve(result.url);
-    });
+    cloudinary.uploader
+      .upload_stream((error, result) => {
+        if (error || !result) reject(error);
+        else resolve(result.url);
+      })
+      .end(imageBuffer);
   });
 };
