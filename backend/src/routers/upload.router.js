@@ -38,3 +38,5 @@ const uploadImageToCloudinary = (imageBuffer) => {
       .end(imageBuffer);
   });
 };
+
+export default router;
