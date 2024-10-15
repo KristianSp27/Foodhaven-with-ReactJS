@@ -21,3 +21,5 @@ router.post(
     const imageUrl = await uploadImageToCloudinary(req.file?.buffer);
   })
 );
+
+const uploadImageToCloudinary = (imageBuffer) => {};
