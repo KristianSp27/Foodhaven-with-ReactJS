@@ -2,8 +2,8 @@ import { Router } from "express";
 import admin from "../middleware/admin.mid.js";
 import multer from "multer";
 import handler from "express-async-handler";
-import { BAD_REQUEST } from "../constants/httpStatus";
-import { configCloudinary } from "../config/cloudinary.config";
+import { BAD_REQUEST } from "../constants/httpStatus.js";
+import { configCloudinary } from "../config/cloudinary.config.js";
 
 const router = Router();
 const upload = multer();
@@ -20,7 +20,7 @@ router.post(
     }
 
     const imageUrl = await uploadImageToCloudinary(req.file?.buffer);
-    res.send(imageUrl);
+    res.send({ imageUrl });
   })
 );
 
