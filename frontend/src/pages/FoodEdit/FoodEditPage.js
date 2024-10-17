@@ -7,6 +7,7 @@ import Title from "../../components/Title/Title";
 import InputContainer from "../../components/InputContainer/InputContainer";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import { uploadImage } from "../../services/uploadService";
 
 export default function FoodEditPage() {
   const { foodId } = useParams();
@@ -31,7 +32,11 @@ export default function FoodEditPage() {
 
   const submit = () => {};
 
-  const upload = () => {};
+  const upload = async (event) => {
+    setImageUrl(null);
+    const imageUrl = await uploadImage(event);
+    setImageUrl(imageUrl);
+  };
 
   return (
     <div className={classes.container}>
