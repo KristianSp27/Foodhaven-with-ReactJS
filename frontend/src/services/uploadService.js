@@ -1,5 +1,5 @@
-import axios from "axios";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export const uploadImage = async (event) => {
   let toastId = null;
@@ -30,7 +30,7 @@ const getImage = async (event) => {
   const file = files[0];
 
   if (file.type !== "image/jpeg") {
-    toast.error("Only JPG type is allowed!", "File type error");
+    toast.error("Only JPG type is allowed", "File type error");
     return null;
   }
 
