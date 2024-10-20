@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 
-(async function () {
+export const configCloudinary = async function () {
   // Configuration
   cloudinary.config({
     cloud_name: proccess.env.CLOUDINARY_CLOUD_NAME,
@@ -36,4 +36,4 @@ import { v2 as cloudinary } from "cloudinary";
   });
 
   console.log(autoCropUrl);
-})();
+};
