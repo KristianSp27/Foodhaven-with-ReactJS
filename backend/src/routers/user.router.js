@@ -93,6 +93,8 @@ router.get("/getall/:searchTerm?", admin),
     const { searchTerm } = req.params;
 
     const filter = searchTerm ? { name: { $regex: new RegExp(searchTerm, "i") } } : {};
+
+    const users = await UserModel.find(filter, { password: 0 });
   });
 
 const generateTokenResponse = (user) => {
