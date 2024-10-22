@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { getAll } from "../../services/userService";
 import classes from "./usersPage.module.css";
+import Title from "../../components/Title/Title";
 
 export default function UsersPage() {
   const [users, setUsers] = useState();
@@ -16,5 +17,11 @@ export default function UsersPage() {
     const users = await getAll(searchTerm);
     setUsers(users);
   };
-  return <div className={classes.container}>UsersPage</div>;
+  return (
+    <div className={classes.container}>
+      <div className={classes.list}>
+        <Title title="Manage users" />
+      </div>
+    </div>
+  );
 }
