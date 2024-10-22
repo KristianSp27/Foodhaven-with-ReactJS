@@ -28,6 +28,7 @@ export default function UsersPage() {
           <h3>Admin</h3>
           <h3>Actions</h3>
         </div>
+        {users && users.map((user) => <div key={user.id} className={classes.list_item}></div>)}
       </div>
     </div>
   );
