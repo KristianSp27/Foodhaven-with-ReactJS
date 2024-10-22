@@ -8,7 +8,8 @@ export default function UsersPage() {
   const { searchTerm } = useParams();
 
   const loadUsers = async () => {
-    const users = await getAll();
+    const users = await getAll(searchTerm);
+    setUsers(users);
   };
   return <div>UsersPage</div>;
 }
