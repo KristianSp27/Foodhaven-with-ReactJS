@@ -21,6 +21,13 @@ export default function UsersPage() {
     <div className={classes.container}>
       <div className={classes.list}>
         <Title title="Manage users" />
+        <div className={classes.list_item}>
+          <h3>Name</h3>
+          <h3>Email</h3>
+          <h3>Address</h3>
+          <h3>Admin</h3>
+          <h3>Actions</h3>
+        </div>
       </div>
     </div>
   );
