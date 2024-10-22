@@ -6,6 +6,7 @@ import handler from "express-async-handler";
 import { UserModel } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import auth from "../middleware/auth.mid.js";
+import admin from "../middleware/admin.mid.js";
 
 const PASSWORD_HASH_SALT_ROUNDS = 10;
 
@@ -86,6 +87,13 @@ router.put(
     res.send();
   })
 );
+
+router.get("/getall/:searchTerm?", admin),
+  handler(async (req, res) => {
+    const { searchTerm } = req.params;
+
+    const filter = searchTerm ? { name: { $regex: new RegExp(searchTerm, "i") } } : {};
+  });
 
 const generateTokenResponse = (user) => {
   const token = jwt.sign(
