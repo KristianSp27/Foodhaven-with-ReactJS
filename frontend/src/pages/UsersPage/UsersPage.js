@@ -35,6 +35,7 @@ export default function UsersPage() {
               <span>{user.email}</span>
               <span>{user.address}</span>
               <span>{user.isAdmin ? "✅" : "❌"}</span>
+              <span className={classes.actions}></span>
             </div>
           ))}
       </div>
