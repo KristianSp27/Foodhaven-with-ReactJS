@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { getAll } from "../../services/userService";
 import classes from "./usersPage.module.css";
@@ -35,7 +35,9 @@ export default function UsersPage() {
               <span>{user.email}</span>
               <span>{user.address}</span>
               <span>{user.isAdmin ? "✅" : "❌"}</span>
-              <span className={classes.actions}></span>
+              <span className={classes.actions}>
+                <Link to={"/admin/editUser/" + user.id}>Edit</Link>
+              </span>
             </div>
           ))}
       </div>
