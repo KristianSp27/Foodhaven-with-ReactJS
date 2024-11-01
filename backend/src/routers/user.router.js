@@ -103,6 +103,10 @@ router.put(
   admin,
   handler(async (req, res) => {
     const { userId } = req.params;
+
+    if (userId === req.user.id) {
+      res.status(BAD_REQUEST).send("Cannot block yourself!");
+    }
   })
 );
 
