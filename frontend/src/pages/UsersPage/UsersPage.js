@@ -37,6 +37,7 @@ export default function UsersPage() {
               <span>{user.isAdmin ? "✅" : "❌"}</span>
               <span className={classes.actions}>
                 <Link to={"/admin/editUser/" + user.id}>Edit</Link>
+                {<Link onClick={() => handleToggleBlock(user.id)}></Link>}
               </span>
             </div>
           ))}
