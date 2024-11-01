@@ -17,6 +17,9 @@ export default function UsersPage() {
     const users = await getAll(searchTerm);
     setUsers(users);
   };
+
+  const handleToggleBlock = async (userId) => {};
+
   return (
     <div className={classes.container}>
       <div className={classes.list}>
