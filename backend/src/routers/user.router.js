@@ -98,6 +98,14 @@ router.get("/getall/:searchTerm?", admin),
     res.send(users);
   });
 
+router.put(
+  "/toggleBlock/:userID",
+  admin,
+  handler(async (req, res) => {
+    const { userId } = req.params;
+  })
+);
+
 const generateTokenResponse = (user) => {
   const token = jwt.sign(
     {
