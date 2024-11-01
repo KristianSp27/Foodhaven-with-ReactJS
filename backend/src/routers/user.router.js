@@ -106,6 +106,7 @@ router.put(
 
     if (userId === req.user.id) {
       res.status(BAD_REQUEST).send("Cannot block yourself!");
+      return;
     }
   })
 );
