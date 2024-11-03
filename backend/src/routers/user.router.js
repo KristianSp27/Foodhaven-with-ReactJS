@@ -108,6 +108,9 @@ router.put(
       res.status(BAD_REQUEST).send("Cannot block yourself!");
       return;
     }
+
+    const user = await UserModel.findById(userId);
+    user.isBlocked = !user.isBlocked;
   })
 );
 
