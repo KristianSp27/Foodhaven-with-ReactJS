@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { getAll } from "../../services/userService";
+import { getAll, toggleBlock } from "../../services/userService";
 import classes from "./usersPage.module.css";
 import Title from "../../components/Title/Title";
 
@@ -18,7 +18,9 @@ export default function UsersPage() {
     setUsers(users);
   };
 
-  const handleToggleBlock = async (userId) => {};
+  const handleToggleBlock = async (userId) => {
+    const isBlocked = await toggleBlock(userId);
+  };
 
   return (
     <div className={classes.container}>
