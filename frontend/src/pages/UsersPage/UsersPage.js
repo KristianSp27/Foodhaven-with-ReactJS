@@ -4,10 +4,12 @@ import { useAuth } from "../../hooks/useAuth";
 import { getAll, toggleBlock } from "../../services/userService";
 import classes from "./usersPage.module.css";
 import Title from "../../components/Title/Title";
+import Search from "../../components/Search/Search";
 
 export default function UsersPage() {
   const [users, setUsers] = useState();
   const { searchTerm } = useParams();
+  const auth = useAuth();
 
   useEffect(() => {
     loadUsers();
@@ -23,10 +25,12 @@ export default function UsersPage() {
 
     setUsers((oldUsers) => oldUsers.map((user) => (user.id === userId ? { ...user, isBlocked } : user)));
   };
+
   return (
     <div className={classes.container}>
       <div className={classes.list}>
-        <Title title="Manage users" />
+        <Title title="Manage Users" />
+        <Search searchRoute="/admin/users/" defaultRoute="/admin/users" placeholder="Search Users" margin="1rem 0" />
         <div className={classes.list_item}>
           <h3>Name</h3>
           <h3>Email</h3>
@@ -43,7 +47,7 @@ export default function UsersPage() {
               <span>{user.isAdmin ? "✅" : "❌"}</span>
               <span className={classes.actions}>
                 <Link to={"/admin/editUser/" + user.id}>Edit</Link>
-                {<Link onClick={() => handleToggleBlock(user.id)}>{user.isBlocked ? "Unblock" : "Block"}</Link>}
+                {auth.user.id !== user.id && <Link onClick={() => handleToggleBlock(user.id)}>{user.isBlocked ? "Unblock" : "Block"}</Link>}
               </span>
             </div>
           ))}
