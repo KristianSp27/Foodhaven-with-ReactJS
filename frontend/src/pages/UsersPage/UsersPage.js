@@ -23,7 +23,6 @@ export default function UsersPage() {
 
     setUsers((oldUsers) => oldUsers.map((user) => (user.id === userId ? { ...user, isBlocked } : user)));
   };
-
   return (
     <div className={classes.container}>
       <div className={classes.list}>
