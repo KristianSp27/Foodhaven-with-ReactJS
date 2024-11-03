@@ -20,6 +20,8 @@ export default function UsersPage() {
 
   const handleToggleBlock = async (userId) => {
     const isBlocked = await toggleBlock(userId);
+
+    setUsers((oldUsers) => oldUsers.map((user) => (user.id === userId ? { ...user, isBlocked } : user)));
   };
 
   return (
