@@ -111,6 +111,9 @@ router.put(
 
     const user = await UserModel.findById(userId);
     user.isBlocked = !user.isBlocked;
+    user.save();
+
+    res.send(user.isBlocked);
   })
 );
 
