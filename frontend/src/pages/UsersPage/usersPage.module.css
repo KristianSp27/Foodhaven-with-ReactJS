@@ -26,3 +26,8 @@
 h3 {
     margin-left: 0;
 }
+
+.actions {
+    display: flex;
+    gap: 0.7rem;
+}
