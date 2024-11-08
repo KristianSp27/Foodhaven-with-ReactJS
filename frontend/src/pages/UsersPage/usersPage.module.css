@@ -22,3 +22,7 @@
 .list_item > * {
     word-wrap: break-word;
 }
+
+h3 {
+    margin-left: 0;
+}
