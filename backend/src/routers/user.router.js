@@ -7,7 +7,6 @@ import { UserModel } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import auth from "../middleware/auth.mid.js";
 import admin from "../middleware/admin.mid.js";
-
 const PASSWORD_HASH_SALT_ROUNDS = 10;
 
 router.post(
@@ -33,7 +32,7 @@ router.post(
     const user = await UserModel.findOne({ email });
 
     if (user) {
-      res.status(BAD_REQUEST).send("This user already exists! Please, log in!");
+      res.status(BAD_REQUEST).send("User already exists, please login!");
       return;
     }
 
@@ -70,14 +69,14 @@ router.put(
     const user = await UserModel.findById(req.user.id);
 
     if (!user) {
-      res.status(BAD_REQUEST).send("Password change has failed.");
+      res.status(BAD_REQUEST).send("Change Password Failed!");
       return;
     }
 
     const equal = await bcrypt.compare(currentPassword, user.password);
 
     if (!equal) {
-      res.status(BAD_REQUEST).send("The current password is not correct!");
+      res.status(BAD_REQUEST).send("Current Password Is Not Correct!");
       return;
     }
 
@@ -88,7 +87,9 @@ router.put(
   })
 );
 
-router.get("/getall/:searchTerm?", admin),
+router.get(
+  "/getall/:searchTerm?",
+  admin,
   handler(async (req, res) => {
     const { searchTerm } = req.params;
 
@@ -96,16 +97,17 @@ router.get("/getall/:searchTerm?", admin),
 
     const users = await UserModel.find(filter, { password: 0 });
     res.send(users);
-  });
+  })
+);
 
 router.put(
-  "/toggleBlock/:userID",
+  "/toggleBlock/:userId",
   admin,
   handler(async (req, res) => {
     const { userId } = req.params;
 
     if (userId === req.user.id) {
-      res.status(BAD_REQUEST).send("Cannot block yourself!");
+      res.status(BAD_REQUEST).send("Can't block yourself!");
       return;
     }
 
@@ -114,6 +116,32 @@ router.put(
     user.save();
 
     res.send(user.isBlocked);
+  })
+);
+
+router.get(
+  "/getById/:userId",
+  admin,
+  handler(async (req, res) => {
+    const { userId } = req.params;
+    const user = await UserModel.findById(userId, { password: 0 });
+    res.send(user);
+  })
+);
+
+router.put(
+  "/update",
+  admin,
+  handler(async (req, res) => {
+    const { id, name, email, address, isAdmin } = req.body;
+    await UserModel.findByIdAndUpdate(id, {
+      name,
+      email,
+      address,
+      isAdmin,
+    });
+
+    res.send();
   })
 );
 
