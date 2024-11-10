@@ -7,7 +7,7 @@ import Title from "../../components/Title/Title";
 import Search from "../../components/Search/Search";
 
 export default function UsersPage() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState();
   const { searchTerm } = useParams();
   const auth = useAuth();
 
@@ -17,13 +17,13 @@ export default function UsersPage() {
 
   const loadUsers = async () => {
     const users = await getAll(searchTerm);
-    setUsers(Array.isArray(users) ? users : []);
+    setUsers(users);
   };
 
   const handleToggleBlock = async (userId) => {
     const isBlocked = await toggleBlock(userId);
 
-    setUsers((oldUsers) => (Array.isArray(oldUsers) ? oldUsers.map((user) => (user.id === userId ? { ...user, isBlocked } : user)) : []));
+    setUsers((oldUsers) => oldUsers.map((user) => (user.id === userId ? { ...user, isBlocked } : user)));
   };
 
   return (
@@ -38,18 +38,19 @@ export default function UsersPage() {
           <h3>Admin</h3>
           <h3>Actions</h3>
         </div>
-        {users.map((user) => (
-          <div key={user.id} className={classes.list_item}>
-            <span>{user.name}</span>
-            <span>{user.email}</span>
-            <span>{user.address}</span>
-            <span>{user.isAdmin ? "✅" : "❌"}</span>
-            <span className={classes.actions}>
-              <Link to={"/admin/editUser/" + user.id}>Edit</Link>
-              {auth.user.id !== user.id && <Link onClick={() => handleToggleBlock(user.id)}>{user.isBlocked ? "Unblock" : "Block"}</Link>}
-            </span>
-          </div>
-        ))}
+        {users &&
+          users.map((user) => (
+            <div key={user.id} className={classes.list_item}>
+              <span>{user.name}</span>
+              <span>{user.email}</span>
+              <span>{user.address}</span>
+              <span>{user.isAdmin ? "✅" : "❌"}</span>
+              <span className={classes.actions}>
+                <Link to={"/admin/editUser/" + user.id}>Edit</Link>
+                {auth.user.id !== user.id && <Link onClick={() => handleToggleBlock(user.id)}>{user.isBlocked ? "Unblock" : "Block"}</Link>}
+              </span>
+            </div>
+          ))}
       </div>
     </div>
   );
