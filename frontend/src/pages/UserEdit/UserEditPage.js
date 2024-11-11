@@ -15,7 +15,8 @@ export default function UserEditPage() {
   const isEditMode = userId;
 
   const loadUser = async () => {
-    const user = await getById();
+    const user = await getById(userId);
+    reset(user);
   };
   return <div>UserEditPage</div>;
 }
