@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { getById } from "../../services/userService";
+import classes from "./userEdit.module.css";
 
 export default function UserEditPage() {
   const {
@@ -17,5 +18,5 @@ export default function UserEditPage() {
   const loadUser = async () => {
     const user = await getById();
   };
-  return <div>UserEditPage</div>;
+  return <div className={classes.container}>UserEditPage</div>;
 }
