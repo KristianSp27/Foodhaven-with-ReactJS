@@ -24,10 +24,14 @@ export default function UserEditPage() {
     const user = await getById(userId);
     reset(user);
   };
+
+  const submit = (userData) => {};
+
   return (
     <div className={classes.container}>
       <div className={classes.content}></div>
       <Title title={isEditMode ? "Edit user" : "Add user"} />
+      <form onSubmit={handleSubmit(submit)} noValidate></form>
     </div>
   );
 }
