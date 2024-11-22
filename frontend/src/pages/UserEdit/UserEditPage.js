@@ -23,5 +23,9 @@ export default function UserEditPage() {
     const user = await getById(userId);
     reset(user);
   };
-  return <div className={classes.container}>UserEditPage</div>;
+  return (
+    <div className={classes.container}>
+      <div className={classes.content}></div>
+    </div>
+  );
 }
