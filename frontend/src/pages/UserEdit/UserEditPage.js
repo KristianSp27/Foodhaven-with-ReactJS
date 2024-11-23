@@ -34,6 +34,7 @@ export default function UserEditPage() {
       <Title title={isEditMode ? "Edit user" : "Add user"} />
       <form onSubmit={handleSubmit(submit)} noValidate>
         <Input label="Name" {...register("name", { required: true, minLength: 3 })} error={errors.name} />
+        <Input label="Email" {...register("email", { required: true })} error={errors.email} />
       </form>
     </div>
   );
