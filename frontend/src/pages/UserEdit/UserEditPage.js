@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getById } from "../../services/userService";
 import classes from "./userEdit.module.css";
 import Title from "../../components/Title/Title";
+import Input from "../../components/Input/Input";
 
 export default function UserEditPage() {
   const {
@@ -31,7 +32,9 @@ export default function UserEditPage() {
     <div className={classes.container}>
       <div className={classes.content}></div>
       <Title title={isEditMode ? "Edit user" : "Add user"} />
-      <form onSubmit={handleSubmit(submit)} noValidate></form>
+      <form onSubmit={handleSubmit(submit)} noValidate>
+        <Input label="Name" {...register("name", { required: true, minLength: 3 })} error={errors.name} />
+      </form>
     </div>
   );
 }
