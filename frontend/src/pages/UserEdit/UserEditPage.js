@@ -37,6 +37,7 @@ export default function UserEditPage() {
         <Input label="Name" {...register("name", { required: true, minLength: 3 })} error={errors.name} />
         <Input label="Email" {...register("email", { required: true, pattern: EMAIL })} error={errors.email} />
         <Input label="Address" {...register("address", { required: true, minLength: 5 })} error={errors.address} />
+        <Input label="Is admin" type="checkbox" {...register("isAdmin")} error={errors.isAdmin} />
       </form>
     </div>
   );
