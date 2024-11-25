@@ -5,6 +5,7 @@ import { getById } from "../../services/userService";
 import classes from "./userEdit.module.css";
 import Title from "../../components/Title/Title";
 import Input from "../../components/Input/Input";
+import { EMAIL } from "../../constants/patterns";
 
 export default function UserEditPage() {
   const {
@@ -34,7 +35,7 @@ export default function UserEditPage() {
       <Title title={isEditMode ? "Edit user" : "Add user"} />
       <form onSubmit={handleSubmit(submit)} noValidate>
         <Input label="Name" {...register("name", { required: true, minLength: 3 })} error={errors.name} />
-        <Input label="Email" {...register("email", { required: true })} error={errors.email} />
+        <Input label="Email" {...register("email", { required: true, pattern: EMAIL })} error={errors.email} />
       </form>
     </div>
   );
