@@ -36,7 +36,7 @@ export default function UserEditPage() {
       <form onSubmit={handleSubmit(submit)} noValidate>
         <Input label="Name" {...register("name", { required: true, minLength: 3 })} error={errors.name} />
         <Input label="Email" {...register("email", { required: true, pattern: EMAIL })} error={errors.email} />
-        <Input label="Address" {...register("address", { required: true })} error={errors.address} />
+        <Input label="Address" {...register("address", { required: true, minLength: 5 })} error={errors.address} />
       </form>
     </div>
   );
